@@ -1,6 +1,6 @@
-#include "sort_headers.h";
-#include <iostream>
 #include <pessum.h>
+#include <iostream>
+#include "sort_headers.h";
 
 int main(int argc, char *argv[]) {
   pessum::InitializePessumComponents();
@@ -44,6 +44,14 @@ int main(int argc, char *argv[]) {
     if (input == '4' || input == 'q' || input == 'Q') {
       running = false;
     }
+    if (input == 'a' || input == 'A') {
+    }
+    if (input == 'b' || input == 'B') {
+    }
+    if (input == 'c' || input == 'C') {
+    }
+    if (input == 'd' || input == 'D') {
+    }
     if (input == 'e' || input == 'E') {
       sort::BubbleSort();
       sort::Reset();
@@ -55,6 +63,18 @@ int main(int argc, char *argv[]) {
     if (input == 'g' || input == 'G') {
       sort::SelectionSort();
       sort::Reset();
+    }
+    if (input == 'h' || input == 'H') {
+    }
+    if (input == 'i' || input == 'I') {
+    }
+    if (input == 'j' || input == 'J') {
+    }
+    if (input == 'k' || input == 'K') {
+    }
+    if (input == 'l' || input == 'L') {
+    }
+    if (input == 'm' || input == 'M') {
     }
   }
   pessum::TerminatePessumComponents();

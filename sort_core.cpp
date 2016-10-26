@@ -1,9 +1,9 @@
-#include "sort_core.h"
+#include <pessum.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
-#include <pessum.h>
 #include <vector>
+#include "sort_core.h"
 namespace sort {
 std::vector<int> values;
 std::vector<int> scrambledvalues;
@@ -119,3 +119,7 @@ void sort::Reset() {
   values.clear();
   values = scrambledvalues;
 }
+
+void sort::UseAll() {}
+
+void sort::MassCheck() {}

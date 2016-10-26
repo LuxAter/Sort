@@ -14,5 +14,7 @@ void DrawLoadingBar(double percent, int size);
 double Timer(bool stop = false);
 void List();
 void Reset();
+void UseAll();
+void MassCheck();
 }
 #endif
