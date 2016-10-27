@@ -6,6 +6,9 @@
 #include <pessum.h>
 #include <vector>
 namespace sort {
+extern int totalrecursioncount;
 double QuickSort();
+void Recursive(int low, int high);
+int Partition(int low, int high);
 }
 #endif

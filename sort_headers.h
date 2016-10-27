@@ -1,5 +1,6 @@
 #include "algorithms/bubble_sort.h"
 #include "algorithms/insertion_sort.h"
+#include "algorithms/merge_sort.h"
 #include "algorithms/quick_sort.h"
 #include "algorithms/selection_sort.h"
 #include "sort_core.h"

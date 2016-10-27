@@ -1,6 +1,6 @@
-#include <pessum.h>
-#include <iostream>
 #include "sort_headers.h";
+#include <iostream>
+#include <pessum.h>
 
 int main(int argc, char *argv[]) {
   pessum::InitializePessumComponents();
@@ -45,8 +45,12 @@ int main(int argc, char *argv[]) {
       running = false;
     }
     if (input == 'a' || input == 'A') {
+      sort::QuickSort();
+      sort::Reset();
     }
     if (input == 'b' || input == 'B') {
+      sort::MergeSort();
+      sort::Reset();
     }
     if (input == 'c' || input == 'C') {
     }
