@@ -3,10 +3,16 @@
 #include <string>
 #include <vector>
 namespace sort {
+struct Algorithm {
+  int n, i;
+  std::string algorithmname;
+  double elapsed;
+};
 extern std::vector<int> values;
 extern std::vector<int> scrambledvalues;
 extern int savedbarcount;
 extern bool display;
+extern bool pausecheck;
 extern clock_t starttime;
 int GenorateValues();
 void DivideLine();

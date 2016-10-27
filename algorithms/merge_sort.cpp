@@ -1,9 +1,9 @@
-#include "../sort_headers.h"
+#include <pessum.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
-#include <pessum.h>
 #include <vector>
+#include "../sort_headers.h"
 
 namespace sort {
 std::vector<int> workvector;
@@ -13,6 +13,7 @@ double sort::MergeSort() {
   DivideLine();
   std::cout << "Merge Sort:\n";
   savedbarcount = -1;
+  double timeelapsed;
   Timer();
   workvector = values;
   for (int i = 1; i < values.size(); i = 2 * i) {
@@ -35,10 +36,13 @@ double sort::MergeSort() {
   }
   DrawLoadingBar(1, 50);
   std::cout << "\nSorted " << values.size() << " values\nIn ";
-  Timer(true);
-  std::cout << "[Y]";
-  char checkin;
-  std::cin >> checkin;
+  timeelapsed = Timer(true);
+  if (pausecheck == true) {
+    std::cout << "[Y]";
+    char checkin;
+    std::cin >> checkin;
+  }
+  return (timeelapsed);
 }
 
 void sort::Merge(int ileft, int iright, int iend) {

@@ -23,7 +23,7 @@ top_obj:$(OBJ_FILES)
 
 .PHONY : subsystem
 subsystem:
-	setterm -foreground green
+	setterm -foreground blue
 	cd algorithms && $(MAKE)
 	setterm -default
 

@@ -1,14 +1,16 @@
-#include "sort_core.h"
+#include <pessum.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
-#include <pessum.h>
+#include <string>
 #include <vector>
+#include "sort_headers.h"
 namespace sort {
 std::vector<int> values;
 std::vector<int> scrambledvalues;
 int savedbarcount = -1;
 bool display = false;
+bool pausecheck = true;
 time_t starttime = 0;
 }
 
@@ -120,6 +122,114 @@ void sort::Reset() {
   values = scrambledvalues;
 }
 
-void sort::UseAll() {}
+void sort::UseAll() {
+  std::vector<Algorithm> algorithms;
+  pausecheck = false;
+  Algorithm newalgo;
+  newalgo.algorithmname = "QuickSort";
+  newalgo.n = values.size();
+  newalgo.i = 0;
+  newalgo.elapsed = QuickSort();
+  algorithms.push_back(newalgo);
+  Reset();
+  newalgo.algorithmname = "MergeSort";
+  newalgo.n = values.size();
+  newalgo.i = 0;
+  newalgo.elapsed = MergeSort();
+  algorithms.push_back(newalgo);
+  Reset();
+  newalgo.algorithmname = "BubbleSort";
+  newalgo.n = values.size();
+  newalgo.i = 0;
+  newalgo.elapsed = BubbleSort();
+  algorithms.push_back(newalgo);
+  Reset();
+  newalgo.algorithmname = "InsertionSort";
+  newalgo.n = values.size();
+  newalgo.i = 0;
+  newalgo.elapsed = InsertionSort();
+  algorithms.push_back(newalgo);
+  Reset();
+  newalgo.algorithmname = "SelectionSort";
+  newalgo.n = values.size();
+  newalgo.i = 0;
+  newalgo.elapsed = SelectionSort();
+  algorithms.push_back(newalgo);
+  Reset();
+
+  for (int i = 0; i < algorithms.size() - 1; i++) {
+    int smallestpointer = i;
+    for (int j = i + 1; j < algorithms.size(); j++) {
+      if (algorithms[j].elapsed < algorithms[smallestpointer].elapsed) {
+        smallestpointer = j;
+      }
+    }
+    if (smallestpointer != i) {
+      iter_swap(algorithms.begin() + i, algorithms.begin() + smallestpointer);
+    }
+  }
+
+  DivideLine();
+  std::cout << "     Algorithm      | hour | min | sec | ms | us \n";
+  for (int i = 0; i < algorithms.size(); i++) {
+    double elapsed = algorithms[i].elapsed;
+    std::string line = "", hstring, minstring, secstring, msstring, usstring;
+    int microsec = 0, millisec = 0, sec = 0, min = 0, hour = 0;
+    sec = floor(elapsed);
+    elapsed -= sec;
+    elapsed = elapsed * 1000;
+    millisec = floor(elapsed);
+    elapsed -= millisec;
+    elapsed = elapsed * 1000;
+    microsec = round(elapsed);
+    while (sec >= 60) {
+      sec -= 60;
+      min++;
+    }
+    while (min >= 60) {
+      min -= 60;
+      hour++;
+    }
+    line = algorithms[i].algorithmname;
+    for (int j = line.size(); j < 20; j++) {
+      line = line + " ";
+    }
+    line = line + "|";
+    hstring = std::to_string(hour);
+    line = line + hstring;
+    for (int j = hstring.size(); j < 6; j++) {
+      line = line + " ";
+    }
+    line = line + "|";
+    minstring = std::to_string(min);
+    line = line + minstring;
+    for (int j = minstring.size(); j < 5; j++) {
+      line = line + " ";
+    }
+    line = line + "|";
+    secstring = std::to_string(sec);
+    line = line + secstring;
+    for (int j = secstring.size(); j < 5; j++) {
+      line = line + " ";
+    }
+    line = line + "|";
+    msstring = std::to_string(millisec);
+    line = line + msstring;
+    for (int j = msstring.size(); j < 4; j++) {
+      line = line + " ";
+    }
+    line = line + "|";
+    usstring = std::to_string(microsec);
+    line = line + usstring;
+    for (int j = usstring.size(); j < 4; j++) {
+      line = line + " ";
+    }
+    line = line + "\n";
+    std::cout << line;
+  }
+  DivideLine();
+  char checkin;
+  std::cin >> checkin;
+}
 
 void sort::MassCheck() {}

@@ -1,6 +1,6 @@
-#include "sort_headers.h";
-#include <iostream>
 #include <pessum.h>
+#include <iostream>
+#include "sort_headers.h";
 
 int main(int argc, char *argv[]) {
   pessum::InitializePessumComponents();
@@ -38,6 +38,7 @@ int main(int argc, char *argv[]) {
       sort::GenorateValues();
     }
     if (input == '2') {
+      sort::UseAll();
     }
     if (input == '3') {
     }

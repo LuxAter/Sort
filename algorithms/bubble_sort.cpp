@@ -1,13 +1,14 @@
-#include "../sort_headers.h"
+#include <pessum.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
-#include <pessum.h>
 #include <vector>
+#include "../sort_headers.h"
 
 double sort::BubbleSort() {
   DivideLine();
   std::cout << "Bubble Sort:\n";
+  double timeelapsed;
   Timer();
   int n = values.size();
   while (n != 0) {
@@ -23,8 +24,11 @@ double sort::BubbleSort() {
   }
   DrawLoadingBar(1, 50);
   std::cout << "\nSorted " << values.size() << " values\nIn ";
-  Timer(true);
-  std::cout << "[Y]";
-  char checkin;
-  std::cin >> checkin;
+  timeelapsed = Timer(true);
+  if (pausecheck == true) {
+    std::cout << "[Y]";
+    char checkin;
+    std::cin >> checkin;
+  }
+  return (timeelapsed);
 }

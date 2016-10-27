@@ -1,9 +1,9 @@
-#include "../sort_headers.h"
+#include <pessum.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
-#include <pessum.h>
 #include <vector>
+#include "../sort_headers.h"
 
 namespace sort {
 int totalrecursioncount = 0;
@@ -13,14 +13,18 @@ double sort::QuickSort() {
   DivideLine();
   std::cout << "Quick Sort:\n";
   totalrecursioncount = 0;
+  double timeelapsed;
   Timer();
   Recursive(0, values.size());
   DrawLoadingBar(1, 50);
   std::cout << "\nSorted " << values.size() << " values\nIn ";
-  Timer(true);
-  std::cout << "[Y]\n";
-  char checkin;
-  std::cin >> checkin;
+  timeelapsed = Timer(true);
+  if (pausecheck == true) {
+    std::cout << "[Y]";
+    char checkin;
+    std::cin >> checkin;
+  }
+  return (timeelapsed);
 }
 
 void sort::Recursive(int low, int high) {

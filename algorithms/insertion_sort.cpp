@@ -1,13 +1,14 @@
-#include "../sort_headers.h"
+#include <pessum.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
-#include <pessum.h>
 #include <vector>
+#include "../sort_headers.h"
 
 double sort::InsertionSort() {
   DivideLine();
   std::cout << "Insertion Sort:\n";
+  double timeelapsed;
   Timer();
   for (int i = 1; i < values.size(); i++) {
     int j = i;
@@ -21,8 +22,11 @@ double sort::InsertionSort() {
   }
   DrawLoadingBar(1, 50);
   std::cout << "\nSorted " << values.size() << " values\nIn ";
-  Timer(true);
-  std::cout << "[Y]";
-  char checkin;
-  std::cin >> checkin;
+  timeelapsed = Timer(true);
+  if (pausecheck == true) {
+    std::cout << "[Y]";
+    char checkin;
+    std::cin >> checkin;
+  }
+  return (timeelapsed);
 }
