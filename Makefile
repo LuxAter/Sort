@@ -7,7 +7,6 @@ LINKER_FLAGS = -lpessum
 PROGRAM_NAME = sort
 
 all: subsystem top_obj $(PROGRAM_NAME)
-	clear
 	@echo Compleated compiling $(PROGRAM_NAME)
 
 $(PROGRAM_NAME): $(OBJ_FILES) $(wildcard */*.o) $(wildcard */*/*.o) $(wildcard */*/*/*.o)
@@ -23,7 +22,6 @@ top_obj:$(OBJ_FILES)
 
 .PHONY : subsystem
 subsystem:
-	setterm -foreground blue
 	cd algorithms && $(MAKE)
 	setterm -default
 
@@ -40,22 +38,17 @@ clean:
 	clear
 	@echo Cleared all '.o' and '.d' files
 
-.PHONY : test
-test: subsystem top_obj $(PROGRAM_NAME)
-
-	./$(PROGRAM_NAME)
-
 .PHONY : tar
 tar: clean
+	rm $(PROGRAM_NAME).tar.gz
 	tar -zcvf $(PROGRAM_NAME).tar.gz ../Sort
-
-.PHONY : lib
-lib:
-	ar rcs lib$(PROGRAM_NAME).a $(TOTAL_OBJ_FILES)
-	sudo cp lib$(PROGRAM_NAME).a ../../../../usr/local/lib/ -u
-	clear
-	@echo Compiled lib file, and copied to usr/local/lib
 
 .PHONY : log
 log:
 	less log_output.log
+
+.PHONY : help
+help:
+	@echo make clean
+	@echo make tar
+	@echo make log

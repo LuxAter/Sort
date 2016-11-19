@@ -1,85 +1,81 @@
-#include <pessum.h>
-#include <iostream>
+#include "induco.h"
 #include "sort_headers.h";
+#include <iostream>
+#include <pessum.h>
 
 int main(int argc, char *argv[]) {
   pessum::InitializePessumComponents();
   bool running = true;
+  int count = 100, min = 0, max = 100;
   srand(time(NULL));
-  sort::display = true;
+  std::vector<std::string> options = {"Meta Average Analize", "Average Analize",
+                                      "Set Value Paramaters",
+                                      "Single Method Sort", "Quit"};
+  std::vector<std::string> sortoptions = {
+      "Quick", "Merge", "Tim",    "Heap",  "Bubble",   "Insertion", "Selection",
+      "Tree",  "Shell", "Bucket", "Radix", "Counting", "Cube",      "Back"};
   while (running == true) {
-    char input = ' ';
-    int integerinput = 0;
-    sort::DivideLine();
-    std::cout << "Sort Test Program\n"
-                 "-----------------\n\n"
-                 "[1]:Genorate Values\n"
-                 "[2]:Use All Methods\n"
-                 "[3]:Mass Comparison\n"
-                 "[4/Q]:Quit Program\n\n"
-                 "Individual Sorting Algorithms\n"
-                 "-----------------------------\n\n"
-                 "[A]:Quick Sort\n"
-                 "[B]:Merge Sort\n"
-                 "[c]:Tim Sort\n"
-                 "[D]:Heap Sort\n"
-                 "[E]:Bubble Sort\n"
-                 "[F]:Insertion Sort\n"
-                 "[G]:Selection Sort\n"
-                 "[H]:Tree Sort\n"
-                 "[I]:Shell Sort\n"
-                 "[J]:Bucket Sort\n"
-                 "[K]:Radix Sort\n"
-                 "[L]:Counting Sort\n"
-                 "[M]:Cube Sort\n\n"
-                 "----------------------\n";
-    std::cin >> input;
-    if (input == '1') {
-      sort::GenorateValues();
+    induco::Break();
+    int input = induco::Menu("Sorting Algorithms", options);
+    if (input == 1) {
+      induco::Break();
     }
-    if (input == '2') {
-      sort::UseAll();
+    if (input == 2) {
+      induco::Break();
     }
-    if (input == '3') {
+    if (input == 3) {
+      induco::Break();
+      count = induco::GetValue("n");
+      min = induco::GetValue("Minimum");
+      max = induco::GetValue("Maximum");
     }
-    if (input == '4' || input == 'q' || input == 'Q') {
+    if (input == 4) {
+      induco::Break();
+      int inputtwo = induco::Menu("Algorithms", sortoptions);
+      induco::Break();
+      sort::Clean();
+      sort::GenorateValues(count, min, max, true);
+      induco::Line(50);
+      if (inputtwo == 1) {
+        sort::Reset();
+        sort::QuickSort(true);
+      }
+      if (inputtwo == 2) {
+        sort::Reset();
+        sort::MergeSort(true);
+      }
+      if (inputtwo == 3) {
+      }
+      if (inputtwo == 4) {
+      }
+      if (inputtwo == 5) {
+        sort::Reset();
+        sort::BubbleSort(true);
+      }
+      if (inputtwo == 6) {
+        sort::Reset();
+        sort::InsertionSort(true);
+      }
+      if (inputtwo == 7) {
+        sort::Reset();
+        sort::SelectionSort(true);
+      }
+      if (inputtwo == 8) {
+      }
+      if (inputtwo == 9) {
+      }
+      if (inputtwo == 10) {
+      }
+      if (inputtwo == 11) {
+      }
+      if (inputtwo == 12) {
+      }
+      if (inputtwo == 13) {
+      }
+    }
+    if (input == 5) {
+      induco::Break();
       running = false;
-    }
-    if (input == 'a' || input == 'A') {
-      sort::QuickSort();
-      sort::Reset();
-    }
-    if (input == 'b' || input == 'B') {
-      sort::MergeSort();
-      sort::Reset();
-    }
-    if (input == 'c' || input == 'C') {
-    }
-    if (input == 'd' || input == 'D') {
-    }
-    if (input == 'e' || input == 'E') {
-      sort::BubbleSort();
-      sort::Reset();
-    }
-    if (input == 'f' || input == 'F') {
-      sort::InsertionSort();
-      sort::Reset();
-    }
-    if (input == 'g' || input == 'G') {
-      sort::SelectionSort();
-      sort::Reset();
-    }
-    if (input == 'h' || input == 'H') {
-    }
-    if (input == 'i' || input == 'I') {
-    }
-    if (input == 'j' || input == 'J') {
-    }
-    if (input == 'k' || input == 'K') {
-    }
-    if (input == 'l' || input == 'L') {
-    }
-    if (input == 'm' || input == 'M') {
     }
   }
   pessum::TerminatePessumComponents();

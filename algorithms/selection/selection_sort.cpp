@@ -1,15 +1,17 @@
-#include <pessum.h>
+#include "../../induco.h"
+#include "../../sort_headers.h"
 #include <cmath>
 #include <ctime>
 #include <iostream>
+#include <pessum.h>
 #include <vector>
-#include "../sort_headers.h"
 
-double sort::SelectionSort() {
-  DivideLine();
-  std::cout << "Seleciton Sort:\n";
+double sort::SelectionSort(bool display) {
+  if (display == true) {
+    std::cout << "Seleciton Sort:\n";
+  }
   double timeelapsed;
-  Timer();
+  induco::Timer(true);
   for (int i = 0; i < values.size() - 1; i++) {
     int smallestpointer = i;
     for (int j = i + 1; j < values.size(); j++) {
@@ -21,16 +23,14 @@ double sort::SelectionSort() {
       iter_swap(values.begin() + i, values.begin() + smallestpointer);
     }
     if (display == true) {
-      DrawLoadingBar(i / (double)values.size(), 50);
+      induco::DrawLoadingBar(i / (double)values.size(), 50);
     }
   }
-  DrawLoadingBar(1, 50);
-  std::cout << "\nSorted " << values.size() << " values\nIn ";
-  timeelapsed = Timer(true);
-  if (pausecheck == true) {
-    std::cout << "[Y]";
-    char checkin;
-    std::cin >> checkin;
+  timeelapsed = induco::Timer();
+  if (display == true) {
+    induco::DrawLoadingBar(1, 50);
+    std::cout << "\nSorted " << values.size() << "\n";
+    std::cout << induco::DisplayTime(timeelapsed, true) << "\n";
   }
   return (timeelapsed);
 }

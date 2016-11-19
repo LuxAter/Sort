@@ -1,24 +1,27 @@
-#include <pessum.h>
+#include "../../induco.h"
+#include "../../sort_headers.h"
 #include <cmath>
 #include <ctime>
 #include <iostream>
+#include <pessum.h>
 #include <vector>
-#include "../sort_headers.h"
 
 namespace sort {
 std::vector<int> workvector;
 }
 
-double sort::MergeSort() {
-  DivideLine();
-  std::cout << "Merge Sort:\n";
-  savedbarcount = -1;
+double sort::MergeSort(bool display) {
+  if (display == true) {
+    std::cout << "Merge Sort:\n";
+  }
   double timeelapsed;
-  Timer();
+  induco::Timer(true);
   workvector = values;
   for (int i = 1; i < values.size(); i = 2 * i) {
     for (int j = 0; j < values.size(); j = j + 2 * i) {
-      DrawLoadingBar(j / (double)values.size(), 50);
+      if (display == true) {
+        induco::DrawLoadingBar(j / (double)values.size(), 50);
+      }
       int vara, varb;
       if (j + i >= values.size()) {
         vara = values.size();
@@ -34,13 +37,11 @@ double sort::MergeSort() {
     }
     values = workvector;
   }
-  DrawLoadingBar(1, 50);
-  std::cout << "\nSorted " << values.size() << " values\nIn ";
-  timeelapsed = Timer(true);
-  if (pausecheck == true) {
-    std::cout << "[Y]";
-    char checkin;
-    std::cin >> checkin;
+  timeelapsed = induco::Timer();
+  if (display == true) {
+    induco::DrawLoadingBar(1, 50);
+    std::cout << "\nSorted " << values.size() << "\n";
+    std::cout << induco::DisplayTime(timeelapsed, true) << "\n";
   }
   return (timeelapsed);
 }

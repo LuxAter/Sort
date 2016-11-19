@@ -10,17 +10,12 @@ struct Algorithm {
 };
 extern std::vector<int> values;
 extern std::vector<int> scrambledvalues;
-extern int savedbarcount;
-extern bool display;
-extern bool pausecheck;
-extern clock_t starttime;
-int GenorateValues();
-void DivideLine();
-void DrawLoadingBar(double percent, int size);
-double Timer(bool stop = false);
+int GenorateValues(int count = 100, int min = 0, int max = 100,
+                   bool display = false);
 void List();
 void Reset();
 void UseAll();
 void MassCheck();
+void Clean();
 }
 #endif
