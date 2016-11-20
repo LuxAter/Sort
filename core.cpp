@@ -6,14 +6,15 @@
 int main(int argc, char *argv[]) {
   pessum::InitializePessumComponents();
   bool running = true;
-  int count = 100, min = 0, max = 100;
+  int count = 1000000, min = 0, max = 100000000;
   srand(time(NULL));
   std::vector<std::string> options = {"Meta Average Analize", "Average Analize",
                                       "Set Value Paramaters",
                                       "Single Method Sort", "Quit"};
   std::vector<std::string> sortoptions = {
-      "Quick", "Merge", "Tim",    "Heap",  "Bubble",   "Insertion", "Selection",
-      "Tree",  "Shell", "Bucket", "Radix", "Counting", "Cube",      "Back"};
+      "Quick[BUG]", "Merge",         "Tim[WIP]",  "Heap[WIP]",  "Bubble",
+      "Insertion",  "Selection",     "Tree[WIP]", "Shell[WIP]", "Bucket",
+      "Radix[WIP]", "Counting[WIP]", "Cube[WIP]", "Back"};
   while (running == true) {
     induco::Break();
     int input = induco::Menu("Sorting Algorithms", options);
@@ -65,10 +66,14 @@ int main(int argc, char *argv[]) {
       if (inputtwo == 9) {
       }
       if (inputtwo == 10) {
+        sort::Reset();
+        sort::BucketSort(10, true);
       }
       if (inputtwo == 11) {
       }
       if (inputtwo == 12) {
+        sort::Reset();
+        sort::CountingSort(true);
       }
       if (inputtwo == 13) {
       }

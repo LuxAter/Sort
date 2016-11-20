@@ -35,6 +35,10 @@ clean:
 	rm -f */*/*.d
 	rm -f */*/*/*.o
 	rm -f */*/*/*.d
+	rm Sorting.aux
+	rm Sorting.log
+	rm Sorting.synctex.gz
+	rm Sorting.toc
 	clear
 	@echo Cleared all '.o' and '.d' files
 

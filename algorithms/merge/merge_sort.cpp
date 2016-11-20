@@ -7,7 +7,7 @@
 #include <vector>
 
 namespace sort {
-std::vector<int> workvector;
+std::vector<int> Mworkvector;
 }
 
 double sort::MergeSort(bool display) {
@@ -16,7 +16,7 @@ double sort::MergeSort(bool display) {
   }
   double timeelapsed;
   induco::Timer(true);
-  workvector = values;
+  Mworkvector = values;
   for (int i = 1; i < values.size(); i = 2 * i) {
     for (int j = 0; j < values.size(); j = j + 2 * i) {
       if (display == true) {
@@ -33,9 +33,9 @@ double sort::MergeSort(bool display) {
       } else {
         varb = j + 2 * i;
       }
-      Merge(j, vara, varb);
+      MMerge(j, vara, varb);
     }
-    values = workvector;
+    values = Mworkvector;
   }
   timeelapsed = induco::Timer();
   if (display == true) {
@@ -46,15 +46,15 @@ double sort::MergeSort(bool display) {
   return (timeelapsed);
 }
 
-void sort::Merge(int ileft, int iright, int iend) {
+void sort::MMerge(int ileft, int iright, int iend) {
   int i = ileft;
   int j = iright;
   for (int k = ileft; k < iend; k++) {
     if (i < iright && (j >= iend || values[i] <= values[j])) {
-      workvector[k] = values[i];
+      Mworkvector[k] = values[i];
       i++;
     } else {
-      workvector[k] = values[j];
+      Mworkvector[k] = values[j];
       j++;
     }
   }

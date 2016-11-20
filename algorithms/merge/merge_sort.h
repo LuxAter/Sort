@@ -6,8 +6,8 @@
 #include <pessum.h>
 #include <vector>
 namespace sort {
-extern std::vector<int> workvector;
+extern std::vector<int> Mworkvector;
 double MergeSort(bool display = false);
-void Merge(int ileft, int iright, int iend);
+void MMerge(int ileft, int iright, int iend);
 }
 #endif

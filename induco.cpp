@@ -193,9 +193,12 @@ int induco::GetSize(bool height) {
 
 void induco::DrawLoadingBar(double percent, int size) {
   std::string bar = "%[";
+  if (percent > 1) {
+    percent = 1;
+  }
   int blocks = percent * size;
-  std::cout << "\r";
   if (savedbarcount != blocks) {
+    std::cout << "\r";
     for (int i = 0; i < blocks; i++) {
       bar = bar + "#";
     }

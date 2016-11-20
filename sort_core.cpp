@@ -39,7 +39,7 @@ int sort::GenorateValues(int count, int min, int max, bool display) {
 
 void sort::List() {
   for (int i = 0; i < values.size(); i++) {
-    std::cout << values[i] << " ";
+    std::cout << values[i] << ",";
   }
   std::cout << "\n";
 }
@@ -48,12 +48,16 @@ void sort::Reset() {
   values.clear();
   values = scrambledvalues;
 }
-
-void sort::UseAll() {}
-
-void sort::MassCheck() {}
-
 void sort::Clean() {
   values.clear();
   scrambledvalues.clear();
+}
+
+bool sort::CheckSort() {
+  for (int i = 1; i < values.size(); i++) {
+    if (values[i - 1] > values[i]) {
+      return (false);
+    }
+  }
+  return (true);
 }
