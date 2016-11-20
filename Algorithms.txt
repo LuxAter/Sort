@@ -1,0 +1,52 @@
+Algorithm List
+==============
+Comparison Sorts
+----------------
+QuickSort
+Merge sort
+In-place merge sort
+Heapsort
+Insertion sort
+Introsort
+Seleciton sort
+Timsort
+Cubesort
+Shell sort
+Bubble sort
+Binary tree sort
+Cycle sort
+Library sort
+Patience sorting
+Smoothsort
+Strand sort
+Tornament sort
+Cocktail sort
+Comb sort
+Gnome sort
+UnShuffle Sort
+Franceschini's method
+Block sort
+Odd-even sort
+
+Non-Comparison Sorts
+--------------------
+Pigeonhole sort
+Bucket sort
+Counting sort
+LSD Radix sort
+MSD Radix sort
+In-place MSD Radix sort
+Spreadsort
+Burstsort
+Flashsort
+Postman sort
+
+Crap Sorts
+----------
+Bead sort
+Simple pancake sort
+Spaghetti sort
+Sorting network
+Bitonic sorter
+Bogosort
+Stooge sort

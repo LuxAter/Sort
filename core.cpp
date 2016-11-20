@@ -1,10 +1,8 @@
 #include "induco.h"
 #include "sort_headers.h";
 #include <iostream>
-#include <pessum.h>
 
 int main(int argc, char *argv[]) {
-  pessum::InitializePessumComponents();
   bool running = true;
   int count = 1000000, min = 0, max = 100000000;
   srand(time(NULL));
@@ -86,6 +84,5 @@ int main(int argc, char *argv[]) {
       running = false;
     }
   }
-  pessum::TerminatePessumComponents();
   return (1);
 }
