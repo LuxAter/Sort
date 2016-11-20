@@ -6,6 +6,9 @@
 #include <pessum.h>
 #include <vector>
 namespace sort {
+struct Counter {
+  int value, count;
+};
 double CountingSort(bool display = false);
 }
 #endif

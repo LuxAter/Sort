@@ -12,9 +12,9 @@ int main(int argc, char *argv[]) {
                                       "Set Value Paramaters",
                                       "Single Method Sort", "Quit"};
   std::vector<std::string> sortoptions = {
-      "Quick[BUG]", "Merge",         "Tim[WIP]",  "Heap[WIP]",  "Bubble",
-      "Insertion",  "Selection",     "Tree[WIP]", "Shell[WIP]", "Bucket",
-      "Radix[WIP]", "Counting[WIP]", "Cube[WIP]", "Back"};
+      "Bubble",      "Bucket",    "Counting",   "Cube[TODO]",  "Heap[TODO]",
+      "Insertion",   "Merge",     "Quick[BUG]", "Radix[TODO]", "Selection",
+      "Shell[TODO]", "Tim[TODO]", "Tree[TODO]", "Back"};
   while (running == true) {
     induco::Break();
     int input = induco::Menu("Sorting Algorithms", options);
@@ -34,9 +34,11 @@ int main(int argc, char *argv[]) {
       induco::Break();
       int inputtwo = induco::Menu("Algorithms", sortoptions);
       induco::Break();
-      sort::Clean();
-      sort::GenorateValues(count, min, max, true);
-      induco::Line(50);
+      if (inputtwo != 14) {
+        sort::Clean();
+        sort::GenorateValues(count, min, max, true);
+        induco::Line(50);
+      }
       if (inputtwo == 1) {
         sort::Reset();
         sort::QuickSort(true);

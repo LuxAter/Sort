@@ -10,33 +10,33 @@ double sort::CountingSort(bool display) {
   if (display == true) {
     std::cout << "Counting Sort:\n";
   }
-  List();
   double timeelapsed;
   induco::Timer(true);
   std::vector<int> counters;
-  int min = values[0], max = values[0];
+  int max = values[0];
   for (int i = 1; i < values.size(); i++) {
-    int value = values[i];
-    if (value > max) {
-      max = value;
-    }
-    if (value < min) {
-      min = value;
+    if (values[i] > max) {
+      max = values[i];
     }
   }
-  for (int i = min; i <= max; i++) {
+  for (int i = 0; i <= max; i++) {
     counters.push_back(0);
   }
   for (int i = 0; i < values.size(); i++) {
-    counters[i]++;
+    counters[values[i]]++;
+    if (display == true) {
+      induco::DrawLoadingBar(0.5 * (i / (double)values.size()), 50);
+    }
   }
   values.clear();
-  for (int i = 0; i < counters.size(); i++) {
+  for (int i = 0; i <= max; i++) {
+    if (display == true) {
+      induco::DrawLoadingBar((0.5 * (i / (double)max)) + 0.5, 50);
+    }
     for (int j = 0; j < counters[i]; j++) {
       values.push_back(i);
     }
   }
-  List();
   timeelapsed = induco::Timer();
   if (display == true) {
     induco::DrawLoadingBar(1, 50);
