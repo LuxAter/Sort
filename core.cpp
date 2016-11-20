@@ -39,21 +39,22 @@ int main(int argc, char *argv[]) {
         sort::GenorateValues(count, min, max, true);
         induco::Line(50);
       }
+
       if (inputtwo == 1) {
         sort::Reset();
-        sort::QuickSort(true);
+        sort::BubbleSort(true);
       }
       if (inputtwo == 2) {
         sort::Reset();
-        sort::MergeSort(true);
+        sort::BucketSort(10, true);
       }
       if (inputtwo == 3) {
+        sort::Reset();
+        sort::CountingSort(true);
       }
       if (inputtwo == 4) {
       }
       if (inputtwo == 5) {
-        sort::Reset();
-        sort::BubbleSort(true);
       }
       if (inputtwo == 6) {
         sort::Reset();
@@ -61,21 +62,21 @@ int main(int argc, char *argv[]) {
       }
       if (inputtwo == 7) {
         sort::Reset();
-        sort::SelectionSort(true);
+        sort::MergeSort(true);
       }
       if (inputtwo == 8) {
+        sort::Reset();
+        sort::QuickSort(true);
       }
       if (inputtwo == 9) {
       }
       if (inputtwo == 10) {
         sort::Reset();
-        sort::BucketSort(10, true);
+        sort::SelectionSort(true);
       }
       if (inputtwo == 11) {
       }
       if (inputtwo == 12) {
-        sort::Reset();
-        sort::CountingSort(true);
       }
       if (inputtwo == 13) {
       }

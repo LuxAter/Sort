@@ -86,8 +86,8 @@ Here is an example of the persudo code, followed by a line by line explanation o
 \While {$n\neq0$}
 \State $newn=0$
 \For {$i=1$ to $n-1$}
-\If{$Values$[$i-1$]$>Values$[$i$]} 
-\State Swap$(Values$[$i-1$], $Values$[$i$]$)$
+\If{$Values[i-1]>Values[i]$} 
+\State Swap$(Values[i-1]$, $Values[i])$
 \State $newn=i$
 \EndIf
 \EndFor
@@ -129,11 +129,11 @@ Here is bucket code in persudo code, accompanied with a line by line explication
 \Function{BucketSort}{$Values$, $n$}
 \State $Arrays<-$ new array of $n$ empty lists
 \For{$i=0$ to (length($Values$)-1)}
-\State insert $Values$[$i$] into $Arrays$[floor($Values$[$i$]/(rangeof($Values$)/$n$))]
+\State insert $Values[i]$ into $Arrays[$floor($Values[i]$/(rangeof($Values$)/$n$))$]$
 \EndFor
 \State clear $Values$
 \For{$i=0$ to $n-1$}
-\State append \Call{BucketSort}{$Arrays$[$i$], $n$} to $Values$
+\State append \Call{BucketSort}{$Arrays[i]$, $n$} to $Values$
 \EndFor
 \State \Return $Values$
 \EndFunction
@@ -162,7 +162,56 @@ Bucket sort is a moderately effective sorting algorithm, but could be greatly im
 
 \subsection{Counting Sort}
 \begin{multicols}{2}
-Counting Sort uses a method
+Counting Sort uses a method where the algorithm counts the number of elements with the same value. Counting sort goes through all the elements in the list, and creates counters for each value in the element list range. The algorithm then goes through the list and adds to each respective counter for each element. Once all the counters are created, then the final list of elements is created by adding each counter to the list. This means that this algorithm is extremely memory efficient with data sets that have a small range, as the algorithm only needs to store a list of range number of integers. However when the data set has a wide range, then this algorithm becomes much less efficient, as there will be many unused counters, and will require storing many more values. This algorithm is very efficient for time, but for memory the algorithms complexity quickly grows, causing it to be unmanageable for data sets with a wide range of values.
+
+This algorithm can be optimized by reducing the  number of for loops that are necessary, and limiting the counters to a lower and upper bound. Because if the values in a list  begin until sever hundred, there is no reason to store counters for everything up until then.
+
+Here is bucket code in persudo code, accompanied with a line by line explication. Real examples of code can be found in \ref{code:counting}.
+\end{multicols}
+\begin{algorithmic}
+\Function{CountingSort}{$Values$}
+\State $Counters<-$ an array of integer values
+\State $min<-$ integer for smallest value in $Values$
+\State $max<-$ integer for largest value in $Values$
+\For{$i=0$ to length($Values$) - 1}
+\If{$Values[i]>max$}
+\State $max=Values[i]$
+\EndIf
+\If{$Values[i]<min$}
+\State $min=Values[i]$
+\EndIf
+\EndFor
+\For{$i=min$ to $max$}
+\State append $0$ to $Counters$
+\EndFor
+\For{$i=0$ to length($Values$) - 1}
+\State $Counters[values[i]-min] + 1$
+\EndFor
+\State Clear $Values$
+\For{$i=0$ to length($Counters$) - 1}
+\For{$j=0$ to $Counters[i]$}
+\State append $(i+min)$ to $Values$
+\EndFor
+\EndFor
+\EndFunction
+\end{algorithmic}
+\begin{multicols}{2}
+$(1)$ The definition of the function with an input of $Values$ which is a list of values to be sorted.
+
+$(5)$ For loop used to determine the minimum and maximum values in $Values$.
+
+$(13)$ For loop to create counters for each value from $min$ to $max$
+
+$(16)$ For loop that runs through all elements in $Values$ and adds to each respective counter for each value.
+
+$(19)$ Clears $Values$ of any items to prepare it for rewriting with sorted results.
+
+$(20)$ Beginning of a for loop that goes through every counter in $Counters$
+
+$(21)$ For loop that adds the counted number of each element back into $Values$ based off of $Counters$
+\end{multicols}
+\begin{multicols}{2}
+Counting sort is extremely efficient in terms of time, as there is no actual comparison between the different elements in the list. This means that counting sort runs fairly quickly, but the memory necessary grows with the range of elements. For a list of elements that has a small range, counting sort will be extremely effective, but for a list of elements with a large range of elements, counting sort will require much more memory to run. The complexity of counting sort is $O(n+k)$, where $k$ is the range of values. This is true for the best and worst case scenarios for counting sort, making it an extremely predictable sorting algorithm.
 \end{multicols}
 \subsection{Cube Sort}
 \subsection{Heap Sort}
@@ -188,6 +237,11 @@ Counting Sort uses a method
 \label{code:bucket}
 \subsubsection{C++}
 \lstinputlisting[language=C++]{algorithms/bucket/bucket_sort.cpp}
+\newpage
+\subsection{Counting}
+\label{code:counting}
+\subsubsection{C++}
+\lstinputlisting[language=C++]{algorithms/counting/counting_sort.cpp}
 \newpage
 \subsection{Insertion}
 \label{code:insertion}
