@@ -11,5 +11,6 @@ void List();
 void Reset();
 void Clean();
 bool CheckSort();
+void UseAll();
 }
 #endif
