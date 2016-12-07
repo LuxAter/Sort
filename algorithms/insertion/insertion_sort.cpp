@@ -13,10 +13,10 @@ double sort::InsertionSort(bool display) {
   induco::Timer(true);
   for (int i = 1; i < values.size(); i++) {
     int j = i;
-    while (j > 0 && values[j - 1] > values[i]) {
+    while (j > 0 && values[j - 1] > values[j]) {
+      iter_swap(values.begin() + j, values.begin() + j - 1);
       j--;
     }
-    iter_swap(values.begin() + j, values.begin() + i);
     if (display == true) {
       induco::DrawLoadingBar(i / (double)values.size(), 50);
     }
