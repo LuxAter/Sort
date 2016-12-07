@@ -54,7 +54,7 @@ void sort::BRecursion(int bucketcount, std::vector<int> *bucket, bool display,
     if (value == max) {
       buckets[buckets.size() - 1].push_back(value);
     } else {
-      buckets[BBucket(value - min, bucketrange)].push_back(value);
+	    buckets[BBucket(value - min, bucketrange)].push_back(value);
     }
   }
   bucket->clear();

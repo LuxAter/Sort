@@ -60,3 +60,42 @@ bool sort::CheckSort() {
   }
   return (true);
 }
+
+void sort::UseAll(){
+  std::vector<double>times;
+  std::vector<std::string> algorithms = {"Bubble", "Bucket", "Counting", "Insertion", "Merge", "Quick", "Selection"};
+  std::cout << algorithms[0] << ":\n";
+  times.push_back(BubbleSort(false));
+  Reset();
+  std::cout << algorithms[1] << ":\n";
+  times.push_back(BucketSort(10, false));
+  Reset();
+  std::cout << algorithms[2] << ":\n";
+  times.push_back(CountingSort(false));
+  Reset();
+  std::cout << algorithms[3] << ":\n";
+  times.push_back(InsertionSort(false));
+  Reset();
+  std::cout << algorithms[4] << ":\n";
+  times.push_back(MergeSort(false));
+  Reset();
+  std::cout << algorithms[5] << ":\n";
+  times.push_back(QuickSort(false));
+  Reset();
+  std::cout << algorithms[6] << ":\n";
+  times.push_back(SelectionSort(false));
+  Reset();
+  induco::Line(51);
+  std::cout << "   ALGORITHM   | HOURS |  MIN |  SEC |  MS  |  US  \n";
+  for(int i = 0; i < times.size(); i++){
+	  std::string line = "";
+	  line = algorithms[i];
+	  while(line.size() < 15){
+		  line = " " + line;
+	  }
+	  line += "|";
+	  line += induco::DisplayTime(times[i], true) + "\n";
+	  std::cout << line;
+  }
+  induco::Pause();
+}
