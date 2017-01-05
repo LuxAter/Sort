@@ -1,6 +1,6 @@
-#include "induco.h"
-#include "sort_headers.h";
 #include <iostream>
+#include "induco.h"
+#include "sort_headers.h"
 
 int main(int argc, char *argv[]) {
   bool running = true;
@@ -8,10 +8,10 @@ int main(int argc, char *argv[]) {
   srand(time(NULL));
   std::vector<std::string> options = {"Meta Average Analize", "Average Analize",
                                       "Set Value Paramaters", "Use All Sort",
-                                      "Single Method Sort", "Quit"};
+                                      "Single Method Sort",   "Quit"};
   std::vector<std::string> sortoptions = {
       "Bubble",      "Bucket",    "Counting",   "Cube[TODO]",  "Heap[TODO]",
-      "Insertion",   "Merge",     "Quick[BUG]", "Radix[TODO]", "Selection",
+      "Insertion",   "Merge",     "Quick",      "Radix[TODO]", "Selection",
       "Shell[TODO]", "Tim[TODO]", "Tree[TODO]", "Back"};
   while (running == true) {
     induco::Break();
@@ -28,10 +28,10 @@ int main(int argc, char *argv[]) {
       min = induco::GetValue("Minimum");
       max = induco::GetValue("Maximum");
     }
-    if(input == 4){
-	    induco::Break();
-	    sort::GenorateValues(count, min, max, true);
-	    sort::UseAll();
+    if (input == 4) {
+      induco::Break();
+      sort::GenorateValues(count, min, max, true);
+      sort::UseAll();
     }
     if (input == 5) {
       induco::Break();

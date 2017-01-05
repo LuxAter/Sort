@@ -1,10 +1,10 @@
-#include "induco.h"
-#include "sort_headers.h"
 #include <cmath>
 #include <ctime>
 #include <iostream>
 #include <string>
 #include <vector>
+#include "induco.h"
+#include "sort_headers.h"
 namespace sort {
 std::vector<int> values;
 std::vector<int> scrambledvalues;
@@ -34,6 +34,7 @@ int sort::GenorateValues(int count, int min, int max, bool display) {
     std::cout << "\nGenorated " << count << "\n";
     std::cout << induco::DisplayTime(induco::Timer(false), true) << "\n";
   }
+  return (0);
 }
 
 void sort::List() {
@@ -61,9 +62,11 @@ bool sort::CheckSort() {
   return (true);
 }
 
-void sort::UseAll(){
-  std::vector<double>times;
-  std::vector<std::string> algorithms = {"Bubble", "Bucket", "Counting", "Insertion", "Merge", "Quick", "Selection"};
+void sort::UseAll() {
+  std::vector<double> times;
+  std::vector<std::string> algorithms = {"Bubble",    "Bucket", "Counting",
+                                         "Insertion", "Merge",  "Quick",
+                                         "Selection"};
   std::cout << algorithms[0] << ":\n";
   times.push_back(BubbleSort(false));
   Reset();
@@ -87,15 +90,15 @@ void sort::UseAll(){
   Reset();
   induco::Line(51);
   std::cout << "   ALGORITHM   | HOURS |  MIN |  SEC |  MS  |  US  \n";
-  for(int i = 0; i < times.size(); i++){
-	  std::string line = "";
-	  line = algorithms[i];
-	  while(line.size() < 15){
-		  line = " " + line;
-	  }
-	  line += "|";
-	  line += induco::DisplayTime(times[i], true) + "\n";
-	  std::cout << line;
+  for (int i = 0; i < times.size(); i++) {
+    std::string line = "";
+    line = algorithms[i];
+    while (line.size() < 15) {
+      line = " " + line;
+    }
+    line += "|";
+    line += induco::DisplayTime(times[i], true) + "\n";
+    std::cout << line;
   }
   induco::Pause();
 }
