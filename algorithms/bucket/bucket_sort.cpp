@@ -1,9 +1,9 @@
-#include "../../induco.h"
-#include "../../sort_headers.h"
+#include <appareo_files/appareo_headers.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
 #include <vector>
+#include "../../sort_headers.h"
 
 namespace sort {
 int Btotalrecursioncount = 0;
@@ -11,20 +11,24 @@ int Btotalrecursioncount = 0;
 
 double sort::BucketSort(int bucketcount, bool display) {
   if (display == true) {
-    std::cout << "Bucket Sort:\n";
+    appareo::curse::out::Print("Bucket Sort");
+    appareo::curse::out::NewLine();
+    appareo::induco::CreateProgressBar("Bucket Sort");
   }
   Btotalrecursioncount = 0;
   double timeelapsed;
-  induco::Timer(true);
+  appareo::induco::Timer(true);
   if (display == true) {
-    induco::DrawLoadingBar(0, 50);
+    appareo::induco::UpdateProgressBar(0);
   }
   BRecursion(bucketcount, &values, display, true);
-  timeelapsed = induco::Timer();
+  timeelapsed = appareo::induco::Timer();
   if (display == true) {
-    induco::DrawLoadingBar(1, 50);
-    std::cout << "\nSorted " << values.size() << "\n";
-    std::cout << induco::DisplayTime(timeelapsed, true) << "\n";
+    appareo::induco::TerminateProgressBar();
+    appareo::curse::out::Print("Sorted " + std::to_string(values.size()));
+    appareo::curse::out::NewLine();
+    appareo::curse::out::Print(appareo::induco::DisplayTime(timeelapsed, true));
+    appareo::curse::out::NewLine();
   }
   return (timeelapsed);
 }
@@ -54,7 +58,7 @@ void sort::BRecursion(int bucketcount, std::vector<int> *bucket, bool display,
     if (value == max) {
       buckets[buckets.size() - 1].push_back(value);
     } else {
-	    buckets[BBucket(value - min, bucketrange)].push_back(value);
+      buckets[BBucket(value - min, bucketrange)].push_back(value);
     }
   }
   bucket->clear();
@@ -69,8 +73,8 @@ void sort::BRecursion(int bucketcount, std::vector<int> *bucket, bool display,
       bucket->insert(bucket->end(), buckets[i].begin(), buckets[i].end());
     }
     if (display == true && top == true) {
-      induco::DrawLoadingBar(bucket->size() / (double)scrambledvalues.size(),
-                             50);
+      appareo::induco::UpdateProgressBar(bucket->size() /
+                                         (double)scrambledvalues.size());
     }
   }
 }

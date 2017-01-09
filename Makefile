@@ -1,12 +1,14 @@
 CPP_FILES = $(wildcard *.cpp)
 OBJ_FILES = $(notdir $(CPP_FILES:.cpp=.o))
 TOTAL_OBJ_FILES = $(wildcard */*.o) $(wildcard */*/*.o) $(wildcard */*/*/*.o)
-CC = g++
+HEADER_FILES = $(wildcard *.h) $(wildcard */*.h) $(wildcard */*/*.h) $(wildcard */*/*/*.h)
+CC = clang++
 COMPILER_FLAGS = -MMD -std=c++11 -w -c
-LINKER_FLAGS = 
+LINKER_FLAGS = -lappareo -lncurses -laequus
 PROGRAM_NAME = sort
 
 all: subsystem top_obj $(PROGRAM_NAME)
+	clear
 	@echo Compleated compiling $(PROGRAM_NAME)
 
 $(PROGRAM_NAME): $(OBJ_FILES) $(wildcard */*.o) $(wildcard */*/*.o) $(wildcard */*/*/*.o)
@@ -15,13 +17,14 @@ $(PROGRAM_NAME): $(OBJ_FILES) $(wildcard */*.o) $(wildcard */*/*.o) $(wildcard *
 	setterm -default
 
 %.o: %.cpp
-	g++ $(COMPILER_FLAGS) -o $(notdir $*).o $*.cpp
+	$(CC) $(COMPILER_FLAGS) -o $(notdir $*).o $*.cpp
 
 .PHONY : top_obj
 top_obj:$(OBJ_FILES)
 
 .PHONY : subsystem
 subsystem:
+	export CC
 	cd algorithms && $(MAKE)
 	setterm -default
 
@@ -35,10 +38,6 @@ clean:
 	rm -f */*/*.d
 	rm -f */*/*/*.o
 	rm -f */*/*/*.d
-	rm Sorting.aux
-	rm Sorting.log
-	rm Sorting.synctex.gz
-	rm Sorting.toc
 	clear
 	@echo Cleared all '.o' and '.d' files
 
@@ -56,3 +55,7 @@ help:
 	@echo make clean
 	@echo make tar
 	@echo make log
+	@echo make new
+
+.PHONY : new
+new: clean all

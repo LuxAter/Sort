@@ -1,9 +1,9 @@
-#include "../../induco.h"
 #include "../../sort_headers.h"
 #include <cmath>
 #include <ctime>
 #include <iostream>
 #include <vector>
+#include <appareo_files/appareo_headers.h>
 
 namespace sort {
 int Qtotalrecursioncount = 0;
@@ -11,17 +11,20 @@ int Qtotalrecursioncount = 0;
 
 double sort::QuickSort(bool display) {
   if (display == true) {
-    std::cout << "Quick Sort:\n";
+    appareo::curse::out::Print("Quick Sort");
+    appareo::curse::out::NewLine();
+    appareo::induco::CreateProgressBar("Quick Sort");
   }
   Qtotalrecursioncount = 0;
-  double timeelapsed;
-  induco::Timer(true);
+  double timeelapsed= appareo::induco::Timer(true);
   QRecursive(0, values.size(), display);
-  timeelapsed = induco::Timer();
+  timeelapsed = appareo::induco::Timer();
   if (display == true) {
-    induco::DrawLoadingBar(1, 50);
-    std::cout << "\nSorted " << values.size() << "\n";
-    std::cout << induco::DisplayTime(timeelapsed, true) << "\n";
+    appareo::induco::TerminateProgressBar();
+    appareo::curse::out::Print("Sorted "+ std::to_string(values.size()));
+    appareo::curse::out::NewLine();
+    appareo::curse::out::Print(appareo::induco::DisplayTime(timeelapsed, true));
+    appareo::curse::out::NewLine();
   }
   return (timeelapsed);
 }
@@ -34,8 +37,7 @@ void sort::QRecursive(int low, int high, bool display) {
   }
   if (display == true) {
     Qtotalrecursioncount++;
-    induco::DrawLoadingBar(Qtotalrecursioncount / (double)(2 * values.size()),
-                           50);
+    appareo::induco::UpdateProgressBar(Qtotalrecursioncount / (double)(2 * values.size()));
   }
 }
 

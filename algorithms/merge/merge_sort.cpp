@@ -1,9 +1,9 @@
-#include "../../induco.h"
 #include "../../sort_headers.h"
 #include <cmath>
 #include <ctime>
 #include <iostream>
 #include <vector>
+#include <appareo_files/appareo_headers.h>
 
 namespace sort {
 std::vector<int> Mworkvector;
@@ -11,15 +11,17 @@ std::vector<int> Mworkvector;
 
 double sort::MergeSort(bool display) {
   if (display == true) {
-    std::cout << "Merge Sort:\n";
+    appareo::curse::out::Print("Merge Sort");
+    appareo::curse::out::NewLine();
+    appareo::induco::CreateProgressBar("Merge Sort");
   }
   double timeelapsed;
-  induco::Timer(true);
+  appareo::induco::Timer(true);
   Mworkvector = values;
   for (int i = 1; i < values.size(); i = 2 * i) {
     for (int j = 0; j < values.size(); j = j + 2 * i) {
       if (display == true) {
-        induco::DrawLoadingBar(j / (double)values.size(), 50);
+        appareo::induco::UpdateProgressBar(j / (double)values.size());
       }
       int vara, varb;
       if (j + i >= values.size()) {
@@ -36,11 +38,13 @@ double sort::MergeSort(bool display) {
     }
     values = Mworkvector;
   }
-  timeelapsed = induco::Timer();
+  timeelapsed = appareo::induco::Timer();
   if (display == true) {
-    induco::DrawLoadingBar(1, 50);
-    std::cout << "\nSorted " << values.size() << "\n";
-    std::cout << induco::DisplayTime(timeelapsed, true) << "\n";
+    appareo::induco::TerminateProgressBar();
+    appareo::curse::out::Print("Sorted "+ std::to_string(values.size()));
+    appareo::curse::out::NewLine();
+    appareo::curse::out::Print(appareo::induco::DisplayTime(timeelapsed, true));
+    appareo::curse::out::NewLine();
   }
   return (timeelapsed);
 }

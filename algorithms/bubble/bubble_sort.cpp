@@ -1,16 +1,18 @@
-#include "../../induco.h"
 #include "../../sort_headers.h"
 #include <cmath>
 #include <ctime>
 #include <iostream>
 #include <vector>
+#include <appareo_files/appareo_headers.h>
 
 double sort::BubbleSort(bool display) {
   if (display == true) {
-    std::cout << "Bubble Sort:\n";
+    appareo::curse::out::Print("Bubble Sort");
+    appareo::curse::out::NewLine();
+    appareo::induco::CreateProgressBar("Bubble Sort");
   }
   double timeelapsed;
-  induco::Timer(true);
+  appareo::induco::Timer(true);
   int n = values.size();
   while (n != 0) {
     int newn = 0;
@@ -22,14 +24,16 @@ double sort::BubbleSort(bool display) {
     }
     n = newn;
     if (display == true) {
-      induco::DrawLoadingBar((values.size() - n) / (float)values.size(), 50);
+      appareo::induco::UpdateProgressBar((values.size() - n) / (float)values.size());
     }
   }
-  timeelapsed = induco::Timer();
+  timeelapsed = appareo::induco::Timer();
   if (display == true) {
-    induco::DrawLoadingBar(1, 50);
-    std::cout << "\nSorted " << values.size() << "\n";
-    std::cout << induco::DisplayTime(timeelapsed, true) << "\n";
+    appareo::induco::TerminateProgressBar();
+    appareo::curse::out::Print("Sorted " + std::to_string(values.size()));
+    appareo::curse::out::NewLine();
+    appareo::curse::out::Print(appareo::induco::DisplayTime(timeelapsed, true));
+    appareo::curse::out::NewLine();
   }
   return (timeelapsed);
 }
