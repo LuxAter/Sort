@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
                                           true, true);
   appareo::curse::out::BindWindow("Sorting Algorithms");
   bool running = true;
-  int count = 1000000, min = 0, max = 100000000;
+  int count = 10000, min = 0, max = 100000;
   srand(time(NULL));
   std::vector<std::string> options = {"Meta Average Analize", "Average Analize",
                                       "Set Value Paramaters", "Use All Sort",
@@ -50,13 +50,14 @@ int main(int argc, char *argv[]) {
       max = fields[2].ival;
     }
     if (input == options[3]) {
-      sort::GenorateValues(count, min, max, true);
+      sort::GenorateValues(count, min, max, false);
       sort::UseAll();
     }
     if (input == options[4]) {
       std::vector<std::string> inputstwo = appareo::curse::NewMenu(
           sortoptions, "Algorithms", 50, 30, -1, -1, true);
       std::vector<std::string> comoptions;
+      std::vector<double> times;
       for (int i = 0; i < sortoptions.size(); i++) {
         for (int j = 0; j < sortoptions[i].size(); j++) {
           comoptions.push_back(sortoptions[i][j]);
@@ -70,15 +71,15 @@ int main(int argc, char *argv[]) {
         std::string inputtwo = inputstwo[i];
         if (inputtwo == comoptions[0]) {
           sort::Reset();
-          sort::BubbleSort(true);
+          times.push_back(sort::BubbleSort(true));
         }
         if (inputtwo == comoptions[1]) {
           sort::Reset();
-          sort::BucketSort(10, true);
+          times.push_back(sort::BucketSort(10, true));
         }
         if (inputtwo == comoptions[2]) {
           sort::Reset();
-          sort::CountingSort(true);
+          times.push_back(sort::CountingSort(true));
         }
         if (inputtwo == comoptions[3]) {
         }
@@ -86,21 +87,21 @@ int main(int argc, char *argv[]) {
         }
         if (inputtwo == comoptions[5]) {
           sort::Reset();
-          sort::InsertionSort(true);
+          times.push_back(sort::InsertionSort(true));
         }
         if (inputtwo == comoptions[6]) {
           sort::Reset();
-          sort::MergeSort(true);
+          times.push_back(sort::MergeSort(true));
         }
         if (inputtwo == comoptions[7]) {
           sort::Reset();
-          sort::QuickSort(true);
+          times.push_back(sort::QuickSort(true));
         }
         if (inputtwo == comoptions[8]) {
         }
         if (inputtwo == comoptions[9]) {
           sort::Reset();
-          sort::SelectionSort(true);
+          times.push_back(sort::SelectionSort(true));
         }
         if (inputtwo == comoptions[10]) {
         }
@@ -109,7 +110,25 @@ int main(int argc, char *argv[]) {
         if (inputtwo == comoptions[12]) {
         }
       }
+      int win = appareo::curse::windows.size();
+      appareo::curse::InitializeWindow();
+      appareo::curse::win->CreateWindow("Results", appareo::curse::scrwidth / 2,
+                                        3 * appareo::curse::scrheight / 4, -1, -1, true,
+                                        true);
+      // induco::Line(51);
+      std::string line = "    ALGORITHM| HOURS |  MIN |  SEC |  MS  |  US";
+      appareo::curse::out::Print(line, 1, (appareo::curse::windows[win].width - line.size()) / 2, win);
+      for (int i = 0; i < times.size(); i++) {
+         line = inputstwo[i];
+         while (line.size() < 15) {
+          line = " " + line;
+        }
+         line += "|";
+         line += appareo::induco::DisplayTime(times[i], true);
+         appareo::curse::out::Print(line, i + 2, (appareo::curse::windows[win].width - line.size()) / 2, win);
+      }
       getch();
+      appareo::curse::TerminateWindow(win);
       appareo::curse::windows[0].Clear();
     }
     if (input == options[5]) {

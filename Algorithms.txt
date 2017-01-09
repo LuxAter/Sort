@@ -2,13 +2,13 @@ Algorithm List
 ==============
 Comparison Sorts
 ----------------
-[/]QuickSort
-[/]Merge sort
+[X]QuickSort
+[X]Merge sort
 [ ]In-place merge sort
 [ ]Heapsort
-[/]Insertion sort
+[X]Insertion sort
 [ ]Introsort
-[/]Seleciton sort
+[X]Seleciton sort
 [ ]Timsort
 [ ]Cubesort
 [ ]Shell sort

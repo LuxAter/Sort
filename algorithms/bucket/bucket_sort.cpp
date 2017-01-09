@@ -11,8 +11,6 @@ int Btotalrecursioncount = 0;
 
 double sort::BucketSort(int bucketcount, bool display) {
   if (display == true) {
-    appareo::curse::out::Print("Bucket Sort");
-    appareo::curse::out::NewLine();
     appareo::induco::CreateProgressBar("Bucket Sort");
   }
   Btotalrecursioncount = 0;
@@ -25,10 +23,6 @@ double sort::BucketSort(int bucketcount, bool display) {
   timeelapsed = appareo::induco::Timer();
   if (display == true) {
     appareo::induco::TerminateProgressBar();
-    appareo::curse::out::Print("Sorted " + std::to_string(values.size()));
-    appareo::curse::out::NewLine();
-    appareo::curse::out::Print(appareo::induco::DisplayTime(timeelapsed, true));
-    appareo::curse::out::NewLine();
   }
   return (timeelapsed);
 }

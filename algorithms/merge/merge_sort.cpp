@@ -11,8 +11,6 @@ std::vector<int> Mworkvector;
 
 double sort::MergeSort(bool display) {
   if (display == true) {
-    appareo::curse::out::Print("Merge Sort");
-    appareo::curse::out::NewLine();
     appareo::induco::CreateProgressBar("Merge Sort");
   }
   double timeelapsed;
@@ -41,10 +39,6 @@ double sort::MergeSort(bool display) {
   timeelapsed = appareo::induco::Timer();
   if (display == true) {
     appareo::induco::TerminateProgressBar();
-    appareo::curse::out::Print("Sorted "+ std::to_string(values.size()));
-    appareo::curse::out::NewLine();
-    appareo::curse::out::Print(appareo::induco::DisplayTime(timeelapsed, true));
-    appareo::curse::out::NewLine();
   }
   return (timeelapsed);
 }

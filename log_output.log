@@ -1,40 +1,11 @@
 SUCCESS>>Opened log: log_output.log>>pessum_files/logging.cpp/InitializeLogging
-INFORMATION>>Sun Jan  8 18:10:28 2017>>TimeStamp
+INFORMATION>>Mon Jan  9 10:36:21 2017>>TimeStamp
 SUCCESS>>Initialized Ncurses>>appareo_files/curse/curse_core.cpp/InitializeNcurses
 SUCCESS>>Initialized output>>appareo_files/curse/output.cpp/InitializeOutput
 SUCCESS>>Initialized colors>>appareo_files/curse/output.cpp/InitializeColor
 SUCCESS>>Creaded window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]CreateWindow
 SUCCESS>>Creaded window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]CreateWindow
 SUCCESS>>Terminated window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]TerminateWindow
-SUCCESS>>Creaded window "Parameters">>appareo_files/curse/window.cpp/[Parameters]CreateWindow
-SUCCESS>>Terminated window "Parameters">>appareo_files/curse/window.cpp/[Parameters]TerminateWindow
-SUCCESS>>Creaded window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]CreateWindow
-SUCCESS>>Terminated window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]TerminateWindow
-SUCCESS>>Creaded window "Algorithms">>appareo_files/curse/window.cpp/[Algorithms]CreateWindow
-SUCCESS>>Terminated window "Algorithms">>appareo_files/curse/window.cpp/[Algorithms]TerminateWindow
-SUCCESS>>Creaded window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]CreateWindow
-SUCCESS>>Terminated window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]TerminateWindow
-SUCCESS>>Creaded window "Algorithms">>appareo_files/curse/window.cpp/[Algorithms]CreateWindow
-SUCCESS>>Terminated window "Algorithms">>appareo_files/curse/window.cpp/[Algorithms]TerminateWindow
 SUCCESS>>Creaded window "Genorating Values">>appareo_files/curse/window.cpp/[Genorating Values]CreateWindow
-SUCCESS>>Terminated window "Genorating Values">>appareo_files/curse/window.cpp/[Genorating Values]TerminateWindow
-SUCCESS>>Creaded window "Bubble Sort">>appareo_files/curse/window.cpp/[Bubble Sort]CreateWindow
-SUCCESS>>Terminated window "Bubble Sort">>appareo_files/curse/window.cpp/[Bubble Sort]TerminateWindow
-SUCCESS>>Creaded window "Bucket Sort">>appareo_files/curse/window.cpp/[Bucket Sort]CreateWindow
-SUCCESS>>Terminated window "Bucket Sort">>appareo_files/curse/window.cpp/[Bucket Sort]TerminateWindow
-SUCCESS>>Creaded window "Counting Sort">>appareo_files/curse/window.cpp/[Counting Sort]CreateWindow
-SUCCESS>>Terminated window "Counting Sort">>appareo_files/curse/window.cpp/[Counting Sort]TerminateWindow
-SUCCESS>>Creaded window "Insertion Sort">>appareo_files/curse/window.cpp/[Insertion Sort]CreateWindow
-SUCCESS>>Terminated window "Insertion Sort">>appareo_files/curse/window.cpp/[Insertion Sort]TerminateWindow
-SUCCESS>>Creaded window "Quick Sort">>appareo_files/curse/window.cpp/[Quick Sort]CreateWindow
-SUCCESS>>Terminated window "Quick Sort">>appareo_files/curse/window.cpp/[Quick Sort]TerminateWindow
-SUCCESS>>Creaded window "Merge Sort">>appareo_files/curse/window.cpp/[Merge Sort]CreateWindow
-SUCCESS>>Terminated window "Merge Sort">>appareo_files/curse/window.cpp/[Merge Sort]TerminateWindow
-SUCCESS>>Creaded window "Selection Sort">>appareo_files/curse/window.cpp/[Selection Sort]CreateWindow
-SUCCESS>>Terminated window "Selection Sort">>appareo_files/curse/window.cpp/[Selection Sort]TerminateWindow
-SUCCESS>>Creaded window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]CreateWindow
-SUCCESS>>Terminated window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]TerminateWindow
-SUCCESS>>Terminated window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]TerminateWindow
-SUCCESS>>Terminated Ncurses>>appareo_files/curse/curse_core.cpp/TerminateNCurses
-SUCCESS>>Terminated log file>>pessum_files/logging.cpp/TerminateLogging
-INFORMATION>>Sun Jan  8 18:11:15 2017>>TimeStamp
+SUCCESS>>Creaded window "Running">>appareo_files/curse/window.cpp/[Running]CreateWindow
+SUCCESS>>Creaded window "Algorithms">>appareo_files/curse/window.cpp/[Algorithms]CreateWindow
