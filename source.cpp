@@ -19,6 +19,9 @@ int main(int argc, char const *argv[]) {
   while (running == true) {
     std::vector<std::string> inputs =
         NewMenu(options, "Sorting Algorithms", scrwidth / 2, 3 * scrheight / 4);
+    if (inputs[0] == "Run All") {
+      sort::RunAlgorithms(algorithms, true);
+    }
     if (inputs[0] == "Run Select") {
       std::vector<std::string> select =
           NewMenu(algorithms, "Run Select", scrwidth / 2, 3 * scrheight / 4, -1,

@@ -62,7 +62,7 @@ void sort::RunAlgorithms(std::vector<std::string> algos, bool display) {
   mapping["Quick"] = &QuickSort;
   // mapping["Radix"] = &RadixSort;
   mapping["Selection"] = &SelectionSort;
-  // mapping["Shell"] = &ShellSort;
+  mapping["Shell"] = &ShellSort;
   // mapping["Tim"] = &TimSort;
   std::vector<double> times;
   times.push_back(GenorateValues());
