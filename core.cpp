@@ -1,6 +1,6 @@
+#include "sort_headers.h"
 #include <appareo_files/appareo_headers.h>
 #include <iostream>
-#include "sort_headers.h"
 
 int main(int argc, char *argv[]) {
   appareo::InitializeAppareo();
@@ -15,15 +15,16 @@ int main(int argc, char *argv[]) {
                                       "Set Value Paramaters", "Use All Sort",
                                       "Single Method Sort",   "Quit"};
   std::vector<std::vector<std::string>> sortoptions = {
-      {"Bubble", "Bucket", "Counting"},
-      {"Cube[TODO]", "Heap[TODO]", "Insertion"},
-      {"Merge", "Quick", "Radix[TODO]"},
-      {"Selection", "Shell[TODO]", "Tim[TODO]"},
-      {"Tree[TODO]"},
+      {"Binary Tree[TODO]", "Bubble", "Bucket"},
+      {"Cocktail", "Counting", "Heap[TODO]"},
+      {"Insertion", "Merge", "Quick"},
+      {"Radix[TODO]", "Selection", "Shell[TODO]"},
+      {"Tim[TODO]"},
       {"Back"}};
   while (running == true) {
-    std::vector<std::string> inputs =
-        appareo::curse::NewMenu(options, "Sorting Algorithms", 50, 20);
+    std::vector<std::string> inputs = appareo::curse::NewMenu(
+        options, "Sorting Algorithms", appareo::curse::scrwidth / 3,
+        appareo::curse::scrheight / 3);
     std::string input = inputs[0];
     if (input == options[0]) {
     }
@@ -44,7 +45,8 @@ int main(int argc, char *argv[]) {
       newfield.type = 1;
       newfield.sval = std::to_string(max);
       fields.push_back(newfield);
-      fields = appareo::curse::NewForm(fields, "Parameters", 50, 10);
+      fields = appareo::curse::NewForm(fields, "Parameters",
+                                       appareo::curse::scrwidth / 3, 10);
       count = fields[0].ival;
       min = fields[1].ival;
       max = fields[2].ival;
@@ -55,7 +57,8 @@ int main(int argc, char *argv[]) {
     }
     if (input == options[4]) {
       std::vector<std::string> inputstwo = appareo::curse::NewMenu(
-          sortoptions, "Algorithms", 50, 30, -1, -1, true);
+          sortoptions, "Algorithms", appareo::curse::scrwidth / 3,
+          appareo::curse::scrheight / 3, -1, -1, true);
       std::vector<std::string> comoptions;
       std::vector<double> times;
       for (int i = 0; i < sortoptions.size(); i++) {
@@ -69,63 +72,58 @@ int main(int argc, char *argv[]) {
       }
       for (int i = 0; i < inputstwo.size(); i++) {
         std::string inputtwo = inputstwo[i];
-        if (inputtwo == comoptions[0]) {
+        if (inputtwo == "Bubble") {
           sort::Reset();
           times.push_back(sort::BubbleSort(true));
         }
-        if (inputtwo == comoptions[1]) {
+        if (inputtwo == "Bucket") {
           sort::Reset();
           times.push_back(sort::BucketSort(10, true));
         }
-        if (inputtwo == comoptions[2]) {
+        if (inputtwo == "Counting") {
           sort::Reset();
           times.push_back(sort::CountingSort(true));
         }
-        if (inputtwo == comoptions[3]) {
-        }
-        if (inputtwo == comoptions[4]) {
-        }
-        if (inputtwo == comoptions[5]) {
+        if (inputtwo == "Insertion") {
           sort::Reset();
           times.push_back(sort::InsertionSort(true));
         }
-        if (inputtwo == comoptions[6]) {
+        if (inputtwo == "Merge") {
           sort::Reset();
           times.push_back(sort::MergeSort(true));
         }
-        if (inputtwo == comoptions[7]) {
+        if (inputtwo == "Quick") {
           sort::Reset();
           times.push_back(sort::QuickSort(true));
         }
-        if (inputtwo == comoptions[8]) {
-        }
-        if (inputtwo == comoptions[9]) {
+        if (inputtwo == "Selection") {
           sort::Reset();
           times.push_back(sort::SelectionSort(true));
         }
-        if (inputtwo == comoptions[10]) {
-        }
-        if (inputtwo == comoptions[11]) {
-        }
-        if (inputtwo == comoptions[12]) {
+        if (inputtwo == "Cocktail") {
+          sort::Reset();
+          times.push_back(sort::CocktailSort(true));
         }
       }
       int win = appareo::curse::windows.size();
       appareo::curse::InitializeWindow();
       appareo::curse::win->CreateWindow("Results", appareo::curse::scrwidth / 2,
-                                        3 * appareo::curse::scrheight / 4, -1, -1, true,
-                                        true);
+                                        3 * appareo::curse::scrheight / 4, -1,
+                                        -1, true, true);
       // induco::Line(51);
       std::string line = "    ALGORITHM| HOURS |  MIN |  SEC |  MS  |  US";
-      appareo::curse::out::Print(line, 1, (appareo::curse::windows[win].width - line.size()) / 2, win);
+      appareo::curse::out::Print(
+          line, 1, (appareo::curse::windows[win].width - line.size()) / 2, win);
       for (int i = 0; i < times.size(); i++) {
-         line = inputstwo[i];
-         while (line.size() < 15) {
+        line = inputstwo[i];
+        while (line.size() < 15) {
           line = " " + line;
         }
-         line += "|";
-         line += appareo::induco::DisplayTime(times[i], true);
-         appareo::curse::out::Print(line, i + 2, (appareo::curse::windows[win].width - line.size()) / 2, win);
+        line += "|";
+        line += appareo::induco::DisplayTime(times[i], true);
+        appareo::curse::out::Print(
+            line, i + 2, (appareo::curse::windows[win].width - line.size()) / 2,
+            win);
       }
       getch();
       appareo::curse::TerminateWindow(win);

@@ -15,7 +15,7 @@ subsystem:
 	setterm -foreground yellow
 	cd counting && $(MAKE)
 	setterm -foreground blue
-	cd cube && $(MAKE)
+	cd cocktail && $(MAKE)
 	setterm -foreground magenta
 	cd heap && $(MAKE)
 	setterm -foreground cyan
@@ -33,4 +33,4 @@ subsystem:
 	setterm -foreground magenta
 	cd tim && $(MAKE)
 	setterm -foreground cyan
-	cd tree && $(MAKE)
+	cd binarytree && $(MAKE)

@@ -1,10 +1,10 @@
+#include "sort_headers.h"
 #include <appareo_files/appareo_headers.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
 #include <string>
 #include <vector>
-#include "sort_headers.h"
 namespace sort {
 std::vector<int> values;
 std::vector<int> scrambledvalues;
@@ -65,9 +65,9 @@ bool sort::CheckSort() {
 
 void sort::UseAll() {
   std::vector<double> times;
-  std::vector<std::string> algorithms = {"Bubble",    "Bucket", "Counting",
-                                         "Insertion", "Merge",  "Quick",
-                                         "Selection"};
+  std::vector<std::string> algorithms = {"Bubble",   "Bucket",    "Cocktail",
+                                         "Counting", "Insertion", "Merge",
+                                         "Quick",    "Selection"};
   appareo::induco::CreateProgressBar("Running");
   int win = appareo::curse::windows.size();
   appareo::curse::InitializeWindow();
@@ -87,25 +87,30 @@ void sort::UseAll() {
   Reset();
   appareo::curse::out::Print(algorithms[2], -1, -1, win);
   appareo::curse::out::NewLine(win);
-  times.push_back(CountingSort(false));
+  times.push_back(CocktailSort(false));
   appareo::induco::UpdateProgressBar(times.size() / (double)algorithms.size());
   Reset();
   appareo::curse::out::Print(algorithms[3], -1, -1, win);
   appareo::curse::out::NewLine(win);
-  times.push_back(InsertionSort(false));
+  times.push_back(CountingSort(false));
   appareo::induco::UpdateProgressBar(times.size() / (double)algorithms.size());
   Reset();
   appareo::curse::out::Print(algorithms[4], -1, -1, win);
   appareo::curse::out::NewLine(win);
-  times.push_back(MergeSort(false));
+  times.push_back(InsertionSort(false));
   appareo::induco::UpdateProgressBar(times.size() / (double)algorithms.size());
   Reset();
   appareo::curse::out::Print(algorithms[5], -1, -1, win);
   appareo::curse::out::NewLine(win);
-  times.push_back(QuickSort(false));
+  times.push_back(MergeSort(false));
   appareo::induco::UpdateProgressBar(times.size() / (double)algorithms.size());
   Reset();
   appareo::curse::out::Print(algorithms[6], -1, -1, win);
+  appareo::curse::out::NewLine(win);
+  times.push_back(QuickSort(false));
+  appareo::induco::UpdateProgressBar(times.size() / (double)algorithms.size());
+  Reset();
+  appareo::curse::out::Print(algorithms[7], -1, -1, win);
   appareo::curse::out::NewLine(win);
   times.push_back(SelectionSort(false));
   appareo::induco::UpdateProgressBar(times.size() / (double)algorithms.size());
@@ -116,19 +121,22 @@ void sort::UseAll() {
   win = appareo::curse::windows.size();
   appareo::curse::InitializeWindow();
   appareo::curse::win->CreateWindow("Results", appareo::curse::scrwidth / 2,
-                                    3 * appareo::curse::scrheight / 4, -1, -1, true,
-                                    true);
+                                    3 * appareo::curse::scrheight / 4, -1, -1,
+                                    true, true);
   // induco::Line(51);
   std::string line = "    ALGORITHM| HOURS |  MIN |  SEC |  MS  |  US";
-  appareo::curse::out::Print(line, 1, (appareo::curse::windows[win].width - line.size()) / 2, win);
+  appareo::curse::out::Print(
+      line, 1, (appareo::curse::windows[win].width - line.size()) / 2, win);
   for (int i = 0; i < times.size(); i++) {
-     line = algorithms[i];
-     while (line.size() < 15) {
+    line = algorithms[i];
+    while (line.size() < 15) {
       line = " " + line;
     }
-     line += "|";
-     line += appareo::induco::DisplayTime(times[i], true);
-     appareo::curse::out::Print(line, i + 2, (appareo::curse::windows[win].width - line.size()) / 2, win);
+    line += "|";
+    line += appareo::induco::DisplayTime(times[i], true);
+    appareo::curse::out::Print(
+        line, i + 2, (appareo::curse::windows[win].width - line.size()) / 2,
+        win);
   }
   getch();
   appareo::curse::TerminateWindow(win);

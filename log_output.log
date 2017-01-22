@@ -1,22 +1,12 @@
 SUCCESS>>Opened log: log_output.log>>pessum_files/logging.cpp/InitializeLogging
-INFORMATION>>Wed Jan 18 10:38:35 2017>>TimeStamp
+INFORMATION>>Sun Jan 22 09:45:20 2017>>TimeStamp
 SUCCESS>>Initialized Ncurses>>appareo_files/curse/curse_core.cpp/InitializeNcurses
 SUCCESS>>Initialized output>>appareo_files/curse/output.cpp/InitializeOutput
 SUCCESS>>Initialized colors>>appareo_files/curse/output.cpp/InitializeColor
 SUCCESS>>Creaded window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]CreateWindow
 SUCCESS>>Creaded window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]CreateWindow
 SUCCESS>>Terminated window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]TerminateWindow
-SUCCESS>>Creaded window "Genorating Values">>appareo_files/curse/window.cpp/[Genorating Values]CreateWindow
-SUCCESS>>Creaded window "Running">>appareo_files/curse/window.cpp/[Running]CreateWindow
-SUCCESS>>Creaded window "Algorithms">>appareo_files/curse/window.cpp/[Algorithms]CreateWindow
-SUCCESS>>Terminated window "Algorithms">>appareo_files/curse/window.cpp/[Algorithms]TerminateWindow
-SUCCESS>>Terminated window "Running">>appareo_files/curse/window.cpp/[Running]TerminateWindow
-SUCCESS>>Creaded window "Results">>appareo_files/curse/window.cpp/[Results]CreateWindow
-SUCCESS>>Terminated window "Results">>appareo_files/curse/window.cpp/[Results]TerminateWindow
-SUCCESS>>Creaded window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]CreateWindow
 SUCCESS>>Terminated window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]TerminateWindow
-SUCCESS>>Terminated window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]TerminateWindow
-SUCCESS>>Terminated window "Genorating Values">>appareo_files/curse/window.cpp/[Genorating Values]TerminateWindow
 SUCCESS>>Terminated Ncurses>>appareo_files/curse/curse_core.cpp/TerminateNCurses
 SUCCESS>>Terminated log file>>pessum_files/logging.cpp/TerminateLogging
-INFORMATION>>Wed Jan 18 10:38:42 2017>>TimeStamp
+INFORMATION>>Sun Jan 22 09:45:21 2017>>TimeStamp

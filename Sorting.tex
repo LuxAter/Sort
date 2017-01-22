@@ -3,7 +3,6 @@
 \usepackage{multicol}
 \usepackage{xcolor}
 \usepackage{listings}
-\lstset{language=C++}
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
@@ -21,7 +20,7 @@
   frame=single,
   keepspaces=true,
   keywordstyle=\color{blue},
-  language=C,
+  language=C++,
   numbers=left,
   numberstyle=\tiny\color{mygray},
   rulecolor=\color{black},
@@ -123,7 +122,7 @@ Bucket sort works with a method of dividing the set of values into smaller and s
 
 Bucket sort can as well be optimized. Bucket sort is very effective at breaking up the large data set into smaller semi-sorted sets of data, but at a point bucket sort becomes inefficient. Because going through algorithm until every value has its own bucket requires much more calculations than some optimized algorithms. One such optimization is to use bucket sort, then once the number of elements in a bucket is below a specified level, then that bucket is sorted using some other sorting algorithm. Or another option is to place all the buckets back into a single semi-sorted list, and then use \textit{Insertion Sort} to complete the sorting, because \textit{Insertion Sort}'s runtime is based off of an elements distance from its final position.
 
-Here is bucket code in persudo code, accompanied with a line by line explication. Real examples of code can be found in \ref{code:bucket}.
+Here is bucket sort code in persudo code, accompanied with a line by line explanation. Real examples of code can be found in \ref{code:bucket}.
 \end{multicols}
 \begin{algorithmic}
 \Function{BucketSort}{$Values$, $n$}
@@ -159,6 +158,61 @@ $(10)$ This sorted list of values is then returned for any functions higher up i
 Bucket sort is a moderately effective sorting algorithm, but could be greatly improved with some simple optimizations. On its own Bucket sort has a complexity of $O(n)$, as there is a need for a bucket for every element that is being sorted. This means that it is fairly efficient, but still could be greatly improved by the implementation of a limit for the minimum size of bucket before initiation a different sorting algorithm.
 \end{multicols}
 
+\subsection{Cocktail Sort}
+\begin{multicols}{2}
+Cocktail Sort uses a method similar to bubble sort. However one improvement that Cocktail sort makes over bubble sort is that the algorithm of cocktail sort goes both ways through the list of items. Bubble sort can only move the items up the the correct position, but cocktail sort is able to also move items down in the list, so the terms are sorted from both directions at the same time.
+
+Here is the persudo code for an example of Cocktail sort, accompanied with a line by line explanation. Real examples of code can be found in \ref{code:cocktail}.
+\end{multicols}
+\begin{algorithmic}
+\Function{CocktailSort}{$Values$}
+\State $Swapped=true$
+\State $Start=0$
+\State $End=$length($Values$)$-1$
+\While{$Swapped=true$}
+\State $Swapped=false$
+\For{$i=Start$ to $End$}
+\If{$Values[i-1]>Values[i=1]$} 
+\State Swap$(Values[i]$, $Values[i+1])$
+\State $Swapped=true$
+\EndIf
+\EndFor
+\If{$Swapped=false$}
+\State $break$
+\EndIf
+\State $Swapped=false$
+\State $End-1$
+\For{$i=End$ to $Start$}
+\If{$Values[i]>Values[i+1]$} 
+\State Swap$(Values[i]$, $Values[i+1])$
+\State $Swapped=true$
+\EndIf
+\EndFor
+\State $Start+1$
+\EndWhile
+\EndFunction
+\end{algorithmic}
+\begin{multicols}{2}
+$(1)$ The definition of the function with an input of $Values$ which is a list of values to be sorted.
+
+$(2)$ Creates variables storing the beginning and end of the sort range.
+
+$(5)$ Beginning of a while loop that runs until $Values$ is sorted.
+
+$(7)$  Basic Bubble sort for loop, moving one item up to its final position.
+
+$(13)$ Checks if nothing was moved, which would mean that $Values$ is sorted.
+
+$(17)$ Reduces $End$ by one, because that item is correctly sorted.
+
+$(18)$ Second Bubble sort loop, but traveling backwards through $Values$
+
+$(24)$ Increases $Start$ by one, because that item is correctly sorted.
+\end{multicols}
+\begin{multicols}{2}
+Cocktail sort is considered a very poor method for sorting algorithms, and is most often less efficient than other extremely simple sorting algorithms. Cocktail sort has a complexity of $O(n^2)$. This complexity means that for an increase in the $n$, the complexity of the algorithm, and the time requirement grow exponentially. For small $n$ values this algorithm would work sufficiently, but as the number of values grows this algorithm becomes much less efficient, and soon becomes useless.
+\end{multicols}
+
 
 \subsection{Counting Sort}
 \begin{multicols}{2}
@@ -166,7 +220,7 @@ Counting Sort uses a method where the algorithm counts the number of elements wi
 
 This algorithm can be optimized by reducing the  number of for loops that are necessary, and limiting the counters to a lower and upper bound. Because if the values in a list  begin until sever hundred, there is no reason to store counters for everything up until then.
 
-Here is bucket code in persudo code, accompanied with a line by line explication. Real examples of code can be found in \ref{code:counting}.
+Here is Counting sort code in persudo code, accompanied with a line by line explanation. Real examples of code can be found in \ref{code:counting}.
 \end{multicols}
 \begin{algorithmic}
 \Function{CountingSort}{$Values$}
@@ -213,11 +267,10 @@ $(21)$ For loop that adds the counted number of each element back into $Values$ 
 \begin{multicols}{2}
 Counting sort is extremely efficient in terms of time, as there is no actual comparison between the different elements in the list. This means that counting sort runs fairly quickly, but the memory necessary grows with the range of elements. For a list of elements that has a small range, counting sort will be extremely effective, but for a list of elements with a large range of elements, counting sort will require much more memory to run. The complexity of counting sort is $O(n+k)$, where $k$ is the range of values. This is true for the best and worst case scenarios for counting sort, making it an extremely predictable sorting algorithm.
 \end{multicols}
-\subsection{Cube Sort}
 \subsection{Heap Sort}
 \subsection{Insertion Sort}
 \begin{multicols}{2}
-Insertion sort is a very common sorting algorithm, as it is very simple, and still effective. The method of insertion sort is to select the first value in the lsit, and to then check it against every value after it in the list. If the selected value is greater than the other value in the comparison, then the two values are swiched, otherwise the loop stops.
+Insertion sort is a very common sorting algorithm, as it is very simple, and still effective. The method of insertion sort is to select the first value in the list, and to then check it against every value after it in the list. If the selected value is greater than the other value in the comparison, then the two values are switched, otherwise the loop stops.
 \end{multicols}
 \subsection{Merge Sort}
 \subsection{Quick Sort}
@@ -240,6 +293,11 @@ Insertion sort is a very common sorting algorithm, as it is very simple, and sti
 \label{code:bucket}
 \subsubsection{C++}
 \lstinputlisting[language=C++]{algorithms/bucket/bucket_sort.cpp}
+\newpage
+\subsection{Cocktail}
+\label{code:cocktail}
+\subsubsection{C++}
+\lstinputlisting[language=C++]{algorithms/cocktail/cocktail_sort.cpp}
 \newpage
 \subsection{Counting}
 \label{code:counting}

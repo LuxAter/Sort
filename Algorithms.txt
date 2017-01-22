@@ -5,22 +5,22 @@ Comparison Sorts
 [X]QuickSort
 [X]Merge sort
 [ ]In-place merge sort
-[ ]Heapsort
+[T]Heapsort
 [X]Insertion sort
 [ ]Introsort
 [X]Seleciton sort
-[ ]Timsort
-[ ]Cubesort
-[ ]Shell sort
+[T]Timsort
+[D]Cubesort
+[T]Shell sort
 [X]Bubble sort
-[ ]Binary tree sort
+[T]Binary tree sort
 [ ]Cycle sort
 [ ]Library sort
 [ ]Patience sorting
 [ ]Smoothsort
 [ ]Strand sort
 [ ]Tornament sort
-[ ]Cocktail sort
+[T]Cocktail sort
 [ ]Comb sort
 [ ]Gnome sort
 [ ]UnShuffle Sort
@@ -33,8 +33,8 @@ Non-Comparison Sorts
 [ ]Pigeonhole sort
 [X]Bucket sort
 [X]Counting sort
-[ ]LSD Radix sort
-[ ]MSD Radix sort
+[T]LSD Radix sort
+[T]MSD Radix sort
 [ ]In-place MSD Radix sort
 [ ]Spreadsort
 [ ]Burstsort
@@ -50,3 +50,17 @@ Crap Sorts
 [ ]Bitonic sorter
 [ ]Bogosort
 [ ]Stooge sort
+
+Binary tree sort
+Bubble sort
+Bucket sort
+Cocktail sort
+Counting sort
+Heapsort
+Insertion sort
+Merge sort
+QuickSort
+Radix sort
+Seleciton sort
+Shell sort
+Timsort
