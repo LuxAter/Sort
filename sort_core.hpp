@@ -12,6 +12,8 @@ extern int count, min, max;
 double GenorateValues();
 void Reset();
 void Clean();
+bool CheckSort();
+void List();
 void RunAlgorithms(std::vector<std::string> algos, bool display = false);
 }
 #endif

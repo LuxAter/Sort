@@ -48,6 +48,29 @@ void sort::Clean() {
   scramble.clear();
 }
 
+bool sort::CheckSort() {
+  int check = min;
+  for (int i = 0; i < values.size(); i++) {
+    if (values[i] > check) {
+      check = values[i];
+    } else if (values[i] < check) {
+      return (false);
+    }
+  }
+  return (true);
+}
+
+void sort::List() {
+  std::string line = "";
+  for (int i = 0; i < values.size(); i++) {
+    line += " " + std::to_string(values[i]);
+    if (i != values.size() - 1) {
+      line += ",";
+    }
+  }
+  pessum::logging::Log(pessum::logging::INFORMATION, line);
+}
+
 void sort::RunAlgorithms(std::vector<std::string> algos, bool display) {
   mappedalgos mapping;
 
