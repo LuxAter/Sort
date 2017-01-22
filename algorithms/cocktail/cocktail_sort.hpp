@@ -1,6 +1,6 @@
 #ifndef _COCKTAIL_SORT_
 #define _COCKTAIL_SORT_
-#include "../../sort_core.h"
+#include "../../sort_core.hpp"
 #include <ctime>
 #include <iostream>
 #include <vector>

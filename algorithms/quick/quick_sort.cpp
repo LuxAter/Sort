@@ -1,9 +1,9 @@
-#include "../../sort_headers.h"
+#include "../../sort_headers.hpp"
+#include <appareo.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
 #include <vector>
-#include <appareo_files/appareo_headers.h>
 
 namespace sort {
 int Qtotalrecursioncount = 0;
@@ -14,7 +14,7 @@ double sort::QuickSort(bool display) {
     appareo::induco::CreateProgressBar("Quick Sort");
   }
   Qtotalrecursioncount = 0;
-  double timeelapsed= appareo::induco::Timer(true);
+  double timeelapsed = appareo::induco::Timer(true);
   QRecursive(0, values.size(), display);
   timeelapsed = appareo::induco::Timer();
   if (display == true) {
@@ -31,7 +31,8 @@ void sort::QRecursive(int low, int high, bool display) {
   }
   if (display == true) {
     Qtotalrecursioncount++;
-    appareo::induco::UpdateProgressBar(Qtotalrecursioncount / (double)(2 * values.size()));
+    appareo::induco::UpdateProgressBar(Qtotalrecursioncount /
+                                       (double)(2 * values.size()));
   }
 }
 

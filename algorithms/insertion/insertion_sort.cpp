@@ -1,9 +1,9 @@
-#include "../../sort_headers.h"
+#include "../../sort_headers.hpp"
+#include <appareo.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
 #include <vector>
-#include <appareo_files/appareo_headers.h>
 
 double sort::InsertionSort(bool display) {
   if (display == true) {

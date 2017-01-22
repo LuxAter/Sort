@@ -1,9 +1,9 @@
-#include "../../sort_headers.h"
+#include "../../sort_headers.hpp"
+#include <appareo.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
 #include <vector>
-#include <appareo_files/appareo_headers.h>
 
 double sort::BubbleSort(bool display) {
   if (display == true) {
@@ -22,7 +22,8 @@ double sort::BubbleSort(bool display) {
     }
     n = newn;
     if (display == true) {
-      appareo::induco::UpdateProgressBar((values.size() - n) / (float)values.size());
+      appareo::induco::UpdateProgressBar((values.size() - n) /
+                                         (float)values.size());
     }
   }
   timeelapsed = appareo::induco::Timer();

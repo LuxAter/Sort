@@ -1,6 +1,6 @@
 #ifndef _BINARYTREE_H_
 #define _BINARYTREE_H_
-#include "../../sort_core.h"
+#include "../../sort_core.hpp"
 #include <ctime>
 #include <iostream>
 #include <vector>

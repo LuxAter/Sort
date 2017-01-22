@@ -1,6 +1,6 @@
 #ifndef _QUICK_SORT_
 #define _QUICK_SORT_
-#include "../../sort_core.h"
+#include "../../sort_core.hpp"
 #include <ctime>
 #include <iostream>
 #include <vector>

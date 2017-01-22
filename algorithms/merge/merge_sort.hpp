@@ -1,6 +1,6 @@
 #ifndef _MERGE_SORT_
 #define _MERGE_SORT_
-#include "../../sort_core.h"
+#include "../../sort_core.hpp"
 #include <ctime>
 #include <iostream>
 #include <vector>

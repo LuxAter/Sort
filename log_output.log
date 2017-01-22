@@ -1,12 +1,34 @@
 SUCCESS>>Opened log: log_output.log>>pessum_files/logging.cpp/InitializeLogging
-INFORMATION>>Sun Jan 22 09:45:20 2017>>TimeStamp
+INFORMATION>>Sun Jan 22 11:09:00 2017>>TimeStamp
 SUCCESS>>Initialized Ncurses>>appareo_files/curse/curse_core.cpp/InitializeNcurses
 SUCCESS>>Initialized output>>appareo_files/curse/output.cpp/InitializeOutput
 SUCCESS>>Initialized colors>>appareo_files/curse/output.cpp/InitializeColor
 SUCCESS>>Creaded window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]CreateWindow
+SUCCESS>>Terminated window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]TerminateWindow
+SUCCESS>>Creaded window "Run Select">>appareo_files/curse/window.cpp/[Run Select]CreateWindow
+SUCCESS>>Terminated window "Run Select">>appareo_files/curse/window.cpp/[Run Select]TerminateWindow
+SUCCESS>>Creaded window "Genorating Values">>appareo_files/curse/window.cpp/[Genorating Values]CreateWindow
+SUCCESS>>Creaded window "Bubble Sort">>appareo_files/curse/window.cpp/[Bubble Sort]CreateWindow
+SUCCESS>>Terminated window "Bubble Sort">>appareo_files/curse/window.cpp/[Bubble Sort]TerminateWindow
+SUCCESS>>Creaded window "Bucket Sort">>appareo_files/curse/window.cpp/[Bucket Sort]CreateWindow
+SUCCESS>>Terminated window "Bucket Sort">>appareo_files/curse/window.cpp/[Bucket Sort]TerminateWindow
+SUCCESS>>Creaded window "Cocktail Sort">>appareo_files/curse/window.cpp/[Cocktail Sort]CreateWindow
+SUCCESS>>Terminated window "Cocktail Sort">>appareo_files/curse/window.cpp/[Cocktail Sort]TerminateWindow
+SUCCESS>>Creaded window "Counting Sort">>appareo_files/curse/window.cpp/[Counting Sort]CreateWindow
+SUCCESS>>Terminated window "Counting Sort">>appareo_files/curse/window.cpp/[Counting Sort]TerminateWindow
+SUCCESS>>Creaded window "Insertion Sort">>appareo_files/curse/window.cpp/[Insertion Sort]CreateWindow
+SUCCESS>>Terminated window "Insertion Sort">>appareo_files/curse/window.cpp/[Insertion Sort]TerminateWindow
+SUCCESS>>Creaded window "Merge Sort">>appareo_files/curse/window.cpp/[Merge Sort]CreateWindow
+SUCCESS>>Terminated window "Merge Sort">>appareo_files/curse/window.cpp/[Merge Sort]TerminateWindow
+SUCCESS>>Creaded window "Quick Sort">>appareo_files/curse/window.cpp/[Quick Sort]CreateWindow
+SUCCESS>>Terminated window "Quick Sort">>appareo_files/curse/window.cpp/[Quick Sort]TerminateWindow
+SUCCESS>>Creaded window "Selection Sort">>appareo_files/curse/window.cpp/[Selection Sort]CreateWindow
+SUCCESS>>Terminated window "Selection Sort">>appareo_files/curse/window.cpp/[Selection Sort]TerminateWindow
+SUCCESS>>Creaded window "Results">>appareo_files/curse/window.cpp/[Results]CreateWindow
+SUCCESS>>Terminated window "Results">>appareo_files/curse/window.cpp/[Results]TerminateWindow
 SUCCESS>>Creaded window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]CreateWindow
 SUCCESS>>Terminated window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]TerminateWindow
-SUCCESS>>Terminated window "Sorting Algorithms">>appareo_files/curse/window.cpp/[Sorting Algorithms]TerminateWindow
+SUCCESS>>Terminated window "Genorating Values">>appareo_files/curse/window.cpp/[Genorating Values]TerminateWindow
 SUCCESS>>Terminated Ncurses>>appareo_files/curse/curse_core.cpp/TerminateNCurses
 SUCCESS>>Terminated log file>>pessum_files/logging.cpp/TerminateLogging
-INFORMATION>>Sun Jan 22 09:45:21 2017>>TimeStamp
+INFORMATION>>Sun Jan 22 11:09:23 2017>>TimeStamp

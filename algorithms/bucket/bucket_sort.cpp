@@ -1,15 +1,16 @@
-#include <appareo_files/appareo_headers.h>
+#include "../../sort_headers.hpp"
+#include <appareo.h>
 #include <cmath>
 #include <ctime>
 #include <iostream>
 #include <vector>
-#include "../../sort_headers.h"
 
 namespace sort {
 int Btotalrecursioncount = 0;
 }
 
-double sort::BucketSort(int bucketcount, bool display) {
+double sort::BucketSort(bool display) {
+  int bucketcount = 10;
   if (display == true) {
     appareo::induco::CreateProgressBar("Bucket Sort");
   }
@@ -68,7 +69,7 @@ void sort::BRecursion(int bucketcount, std::vector<int> *bucket, bool display,
     }
     if (display == true && top == true) {
       appareo::induco::UpdateProgressBar(bucket->size() /
-                                         (double)scrambledvalues.size());
+                                         (double)scramble.size());
     }
   }
 }
