@@ -25,6 +25,7 @@ void sort::MainLoop() {
   PrintOpen();
   LoadHelp();
   LoadAlgos();
+  GenData("");
   std::string input = "";
   bool update = true;
   while (running == true) {
@@ -101,13 +102,17 @@ void sort::RunInput(std::string input) {
     }
   } else if (input == "clear") {
     win.Clear();
+  } else if (input[0] == 'd' && input[1] == 'a' && input[2] == 't' &&
+             input[3] == 'a') {
+    input.erase(input.begin(), input.begin() + 4);
+    GenData(input);
   } else if (RunAlgo(input) == true) {
   } else {
     win.Print("\"%s\" is not a valid command\n", input.c_str());
   }
 }
 
-int IsInt(std::string str) {
+int sort::IsInt(std::string str) {
   bool good = true;
   for (int i = 0; i < str.length(); i++) {
     if (int(str[i]) > 57 || int(str[i]) < 48) {

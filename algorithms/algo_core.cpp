@@ -8,20 +8,21 @@
 
 namespace sort {
   AlgoResult result;
-  std::map<std::string, void (*)(std::vector<int>)> algorithms;
-  std::vector<int> data_base;
+  std::map<std::string, void (*)()> algorithms;
+  std::vector<int> data_base, data;
 }
 
 void sort::LoadAlgos() { algorithms["quicksort"] = Quicksort; }
 
 bool sort::RunAlgo(std::string algo) {
-  std::map<std::string, void (*)(std::vector<int>)>::iterator it;
+  std::map<std::string, void (*)()>::iterator it;
   it = algorithms.find(algo);
   bool good = false;
   if (it != algorithms.end()) {
     win.Print("Running %s...\n", algo.c_str());
     ClearResults();
-    it->second(data_base);
+    data = data_base;
+    it->second();
     win.Print("Compleated %s\n", algo.c_str());
     PrintResults();
     good = true;
@@ -49,34 +50,44 @@ void sort::PrintResults() {
       "%.2im:%.2is:%.3ims:%.3iµs\nComparisons: "
       "%li\nArray "
       "Access: "
-      "%li\nArray Writes: %li\n",
+      "%li\n",
       result.time_elapsed, min, sec, milli_sec, micro_sec, result.comparisons,
-      result.vec_access, result.vec_writes);
+      result.vec_access);
 }
 void sort::ClearResults() {
   result.time_elapsed = 0;
   result.comparisons = 0;
   result.vec_access = 0;
-  result.vec_writes = 0;
 }
 
 void sort::GenData(std::string settings) {
   std::string min_str = "", max_str = "", count_str = "";
   std::string sub_string = "";
   int min = 0, max = 100000;
-  long int count = 10000;
+  int count = 10000;
   for (int i = 0; i < settings.length(); i++) {
-    if (i == ' ' && sub_string != "") {
+    if (settings[i] == ' ' && sub_string != "") {
       if (count_str == "") {
         count_str = sub_string;
-      } else if (max_str != "") {
+      } else if (max_str == "") {
         max_str = sub_string;
-      } else if (min_str != "") {
+      } else if (min_str == "") {
         min_str = sub_string;
       }
       sub_string = "";
+    } else if (settings[i] == ' ') {
+      sub_string = "";
     } else {
       sub_string += settings[i];
+    }
+  }
+  if (sub_string != "") {
+    if (count_str == "") {
+      count_str = sub_string;
+    } else if (max_str == "") {
+      max_str = sub_string;
+    } else if (min_str == "") {
+      min_str = sub_string;
     }
   }
   if (count_str.length() != 0 && IsInt(count_str) != -1) {
@@ -89,6 +100,8 @@ void sort::GenData(std::string settings) {
     min = IsInt(min_str);
   }
   int range = max - min;
+  win.Print("Generating Data...\n%i values between:\n(%i-%i)\n", count, min,
+            max);
   data_base.clear();
   for (long int i = 0; i < count; i++) {
     data_base.push_back(min + (rand() % range));
