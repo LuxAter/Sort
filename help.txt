@@ -8,4 +8,6 @@ Commands:
 Help Pages:
   [00]:Basic Commands
   [01]:List of Help pages
-  [02]:
+  [02]:Algorithms
+/newpage
+  Quicksort

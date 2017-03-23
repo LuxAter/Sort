@@ -17,8 +17,8 @@ using namespace ostendo;
 
 void sort::MainLoop() {
   running = true;
-  win.NewWindow(ostendo::std_scr.w / 2, ostendo::std_scr.h / 2,
-                ostendo::std_scr.w / 4, ostendo::std_scr.h / 4);
+  win.NewWindow(ostendo::std_scr.w, ostendo::std_scr.h,
+                0, 0);
   win.ToggleTitle("Sorting Algorithms");
   win.ToggleBorder();
   win.ToggleScroll();
@@ -94,7 +94,7 @@ void sort::RunInput(std::string input) {
     running = false;
   } else if (input[0] == 'h' && input[1] == 'e' && input[2] == 'l' &&
              input[3] == 'p') {
-    input.erase(input.begin(), input.begin() + 4);
+    input.erase(input.begin(), input.begin() + 5);
     if (input.length() != 0) {
       Help(IsInt(input));
     } else {
@@ -104,7 +104,7 @@ void sort::RunInput(std::string input) {
     win.Clear();
   } else if (input[0] == 'd' && input[1] == 'a' && input[2] == 't' &&
              input[3] == 'a') {
-    input.erase(input.begin(), input.begin() + 4);
+    input.erase(input.begin(), input.begin() + 5);
     GenData(input);
   } else if (RunAlgo(input) == true) {
   } else {
