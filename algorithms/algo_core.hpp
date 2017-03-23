@@ -5,15 +5,16 @@
 #include <vector>
 namespace sort {
   struct AlgoResult {
-    double time;
+    double time_elapsed;
     long int comparisons;
     long int vec_access;
     long int vec_writes;
   };
-  extern AlgoResult Result;
+  extern AlgoResult result;
   extern std::map<std::string, double (*)(std::vector<int>)> algorithms;
   extern std::vector<int> data_base;
   void LoadAlgos();
-  void RunAlgo(std::string algo);
+  bool RunAlgo(std::string algo);
+  void PrintResults();
 }
 #endif
