@@ -11,10 +11,12 @@ namespace sort {
     long int vec_writes;
   };
   extern AlgoResult result;
-  extern std::map<std::string, double (*)(std::vector<int>)> algorithms;
+  extern std::map<std::string, void (*)(std::vector<int>)> algorithms;
   extern std::vector<int> data_base;
   void LoadAlgos();
   bool RunAlgo(std::string algo);
   void PrintResults();
+  void ClearResults();
+  void GenData(std::string settings);
 }
 #endif

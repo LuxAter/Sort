@@ -1,8 +1,12 @@
 #include <time.h>
 #include <vector>
+#include "algo_core.hpp"
 #include "quicksort.hpp"
 
-double sort::Quicksort(std::vector<int> Data) { return (0.0); }
+void sort::Quicksort(std::vector<int> Data) {
+  clock_t start = clock();
+  result.time_elapsed = clock() - start;
+}
 
 void sort::QuicksortBase(std::vector<int> Data, int low, int high) {}
 
