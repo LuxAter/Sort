@@ -1,0 +1,15 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+sort	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^namespace sort {$/;"	namespace	line:7	file:
+running	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^  bool running = true;$/;"	member	line:8	namespace:sort	file:
+help_doc	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^  std::string help_doc = "";$/;"	member	line:9	namespace:sort	file:
+MainLoop	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^void sort::MainLoop() {$/;"	function	line:12	class:sort	signature:()
+PrintOpen	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^void sort::PrintOpen() {$/;"	function	line:35	class:sort	signature:()
+Help	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^void sort::Help(int page) {$/;"	function	line:41	class:sort	signature:(int page)
+LoadHelp	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^void sort::LoadHelp() {$/;"	function	line:49	class:sort	signature:()
+RunInput	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^void sort::RunInput(std::string input) {$/;"	function	line:61	class:sort	signature:(std::string input)
+NormalizeInput	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^std::string sort::NormalizeInput(std::string input) {$/;"	function	line:71	class:sort	signature:(std::string input)

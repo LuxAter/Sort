@@ -1,0 +1,19 @@
+main	/home/ardenrasmussen/Programing/sort/source.cpp	/^int main(int argc, char const* argv[]) {$/;"	function	line:5	signature:(int argc, char const* argv[])
+SORT_SORTING_SORT_HPP	/home/ardenrasmussen/Programing/sort/sorting/sort.hpp	/^#define SORT_SORTING_SORT_HPP$/;"	macro	line:2
+sort	/home/ardenrasmussen/Programing/sort/sorting/sort.hpp	/^namespace sort {$/;"	namespace	line:4
+COMPILER	/home/ardenrasmussen/Programing/sort/Makefile	/^export COMPILER = clang++$/;"	macro	line:5
+FLAGS	/home/ardenrasmussen/Programing/sort/Makefile	/^export FLAGS = -MMD -std=c++11 -w -c$/;"	macro	line:6
+CPP_FILES	/home/ardenrasmussen/Programing/sort/Makefile	/^CPP_FILES = $(wildcard *.cpp)$/;"	macro	line:7
+TOP_DIR	/home/ardenrasmussen/Programing/sort/Makefile	/^TOP_DIR = $(notdir $(CPP_FILES:.cpp=.o))$/;"	macro	line:8
+OBJ_FILES	/home/ardenrasmussen/Programing/sort/Makefile	/^OBJ_FILES := $(shell find -name '*.o')$/;"	macro	line:9
+LINK	/home/ardenrasmussen/Programing/sort/Makefile	/^LINK = -lncurses$/;"	macro	line:10
+NAME	/home/ardenrasmussen/Programing/sort/Makefile	/^NAME = sort$/;"	macro	line:11
+sort	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^namespace sort {$/;"	namespace	line:7	file:
+running	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^  bool running = true;$/;"	member	line:8	namespace:sort	file:
+help_doc	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^  std::string help_doc = "";$/;"	member	line:9	namespace:sort	file:
+MainLoop	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^void sort::MainLoop() {$/;"	function	line:12	class:sort	signature:()
+PrintOpen	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^void sort::PrintOpen() {$/;"	function	line:35	class:sort	signature:()
+Help	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^void sort::Help(int page) {$/;"	function	line:41	class:sort	signature:(int page)
+LoadHelp	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^void sort::LoadHelp() {$/;"	function	line:49	class:sort	signature:()
+RunInput	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^void sort::RunInput(std::string input) {$/;"	function	line:61	class:sort	signature:(std::string input)
+NormalizeInput	/home/ardenrasmussen/Programing/sort/sorting/sort.cpp	/^std::string sort::NormalizeInput(std::string input) {$/;"	function	line:71	class:sort	signature:(std::string input)

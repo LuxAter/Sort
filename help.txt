@@ -1,0 +1,11 @@
+Commands:
+  quit:
+    Quits the program.
+  help [i]:
+    Opens this help page number [i],
+    if no [i] is provided defaults to 0.
+/newpage
+Help Pages:
+  [00]:Basic Commands
+  [01]:List of Help pages
+  [02]:
