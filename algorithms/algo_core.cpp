@@ -12,7 +12,10 @@ namespace sort {
   std::vector<int> data_base, data;
 }
 
-void sort::LoadAlgos() { algorithms["quicksort"] = Quicksort; }
+void sort::LoadAlgos() {
+  algorithms["quicksort"] = QuickSort;
+  algorithms["insertionsort"] = InsertionSort;  
+}
 
 bool sort::RunAlgo(std::string algo) {
   std::map<std::string, void (*)()>::iterator it;
@@ -106,4 +109,14 @@ void sort::GenData(std::string settings) {
   for (long int i = 0; i < count; i++) {
     data_base.push_back(min + (rand() % range));
   }
+}
+
+bool sort::IsSorted(){
+  bool good = true;
+  for(int i = 1; i < data.size() && good == true; i++){
+    if(data[i] < data[i-1]){
+      good = false;
+    }
+  }
+  return(good);
 }

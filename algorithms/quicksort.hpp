@@ -2,8 +2,8 @@
 #define QUICKSORT
 #include <vector>
 namespace sort {
-  void Quicksort();
-  void QuicksortBase(int low, int high);
-  int QuicksortPartition(int low, int high);
+  void QuickSort();
+  void QuickSortBase(int low, int high);
+  int QuickSortPartition(int low, int high);
 }
 #endif

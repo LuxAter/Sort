@@ -10,4 +10,9 @@ Help Pages:
   [01]:List of Help pages
   [02]:Algorithms
 /newpage
-  Quicksort
+Algorithms:
+  Heap Sort
+  In-Place Merge Sort
+  Insertion Sort
+  Merge Sort
+  Quick Sort

@@ -106,7 +106,13 @@ void sort::RunInput(std::string input) {
              input[3] == 'a') {
     input.erase(input.begin(), input.begin() + 5);
     GenData(input);
-  } else if (RunAlgo(input) == true) {
+  } else if(input == "check"){
+    if(IsSorted() == true){
+      win.Print("The data set was successfuly sorted\n");
+    }else{
+      win.Print("The data set was not successfuly sorted\n");
+    }
+  }else if (RunAlgo(input) == true) {
   } else {
     win.Print("\"%s\" is not a valid command\n", input.c_str());
   }

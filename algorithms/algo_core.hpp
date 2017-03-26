@@ -17,5 +17,6 @@ namespace sort {
   void PrintResults();
   void ClearResults();
   void GenData(std::string settings);
+  bool IsSorted();
 }
 #endif
