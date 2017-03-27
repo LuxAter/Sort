@@ -26,6 +26,8 @@ void sort::MainLoop() {
   LoadHelp();
   LoadAlgos();
   GenData("");
+  std::vector<std::string> past_input;
+  int input_index = past_input.size();
   std::string input = "";
   bool update = true;
   while (running == true) {
@@ -37,7 +39,9 @@ void sort::MainLoop() {
     if (in == 10) {
       win.Print("\n");
       RunInput(input);
+      past_input.push_back(input);
       input = "";
+      input_index = past_input.size();
       update = true;
     } else if (in == KEY_BACKSPACE) {
       if (input.length() > 0) {
@@ -45,7 +49,26 @@ void sort::MainLoop() {
         input.pop_back();
         update = true;
       }
-    } else if (in != ERR) {
+    } else if(in == KEY_UP){
+      if(input_index > 0){
+        input_index--;
+        input = past_input[input_index];
+        win.ClearLine();
+        update = true;
+      }
+    } else if(in == KEY_DOWN){
+      if(input_index < past_input.size() - 1){
+        input_index++;
+        input = past_input[input_index];
+        win.ClearLine();
+        update = true;
+      }else if(input_index == past_input.size() - 1){
+        input_index++;
+        input = "";
+        win.ClearLine();
+        update = true;
+      }
+    }else if (in != ERR) {
       input += char(in);
       win.SetCurs(-1, 1);
       update = true;

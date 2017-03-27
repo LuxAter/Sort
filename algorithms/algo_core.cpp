@@ -23,6 +23,7 @@ void sort::LoadAlgos() {
   algorithms["binarytree"] = BinaryTreeSort;
   algorithms["bubble"] = BubbleSort;
   algorithms["cocktail"] = CocktailSort;
+  algorithms["comb"] = CombSort;
 }
 
 bool sort::RunAlgo(std::string algo) {
@@ -168,7 +169,7 @@ void sort::Run(std::vector<std::string> algos){
     }
   }
   win.Print("\n\nAlgorithm    Sort Time             Raw Time   Comparisons   Array Access\n");
-  win.Print("----------------------------------------------------------------------------\n");
+  win.Print("------------------------------------------------------------------------\n");
   for(int i = 0; i < results.size(); i++){
     results[i].time_elapsed /= (double)loops;
     results[i].comparisons /= loops;
@@ -184,6 +185,6 @@ void sort::Run(std::vector<std::string> algos){
     dmicro_sec = ceil(remaining_time);
     int min = dmin, sec = dsec, milli_sec = dmilli_sec,
         micro_sec = (int)dmicro_sec;
-    win.Print("%s   %.2im:%.2is:%.3ims:%.3ius   %.8f   %.11i   %.12i\n", algos[i].c_str(), min, sec, milli_sec, micro_sec, results[i].time_elapsed, results[i].comparisons, results[i].vec_access);
+    win.Print("%s   %.2im:%.2is:%.3ims:%.3ius   %f   %.11i   %.12i\n", algos[i].c_str(), min, sec, milli_sec, micro_sec, results[i].time_elapsed, results[i].comparisons, results[i].vec_access);
   }
 }
