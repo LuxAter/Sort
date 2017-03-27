@@ -20,6 +20,7 @@ void sort::LoadAlgos() {
   algorithms["badsort"] = BadSort;
   algorithms["selection"] = SelectionSort;
   algorithms["binarytree"] = BinaryTreeSort;
+  algorithms["bubble"] = BubbleSort;
 }
 
 bool sort::RunAlgo(std::string algo) {
