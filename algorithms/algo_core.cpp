@@ -10,6 +10,7 @@ namespace sort {
   AlgoResult result;
   std::map<std::string, void (*)()> algorithms;
   std::vector<int> data_base, data;
+  int data_count = 10000, data_min = 0, data_max = 10000;
 }
 
 void sort::LoadAlgos() {
@@ -87,11 +88,26 @@ void sort::GenData(std::string settings) {
   if (min_str.length() != 0 && IsInt(min_str) != -1) {
     min = IsInt(min_str);
   }
-  int range = max - min;
-  win.Print("Generating Data...\n%i values between:\n(%i-%i)\n", count, min,
-            max);
+  GenData(count, min, max);
+}
+
+void sort::GenData(int count, int min, int max){
+  if(count == -1){
+    count = data_count;
+  }
+  if(min == -1){
+    min = data_min;
+  }
+  if(max == -1){
+    max = data_max;
+  }
+  data_count = count;
+  data_min = min;
+  data_max = max;
+  win.Print("Generating Data...\n%i values between:\n(%i-%i)\n", data_count, data_min, data_max);
   data_base.clear();
-  for (long int i = 0; i < count; i++) {
+  int range = max - min;
+  for(int i = 0; i < data_count; i++){
     data_base.push_back(min + (rand() % range));
   }
 }
@@ -111,9 +127,36 @@ void sort::BadSort(){
 
 void sort::Run(std::vector<std::string> algos){
   std::vector<AlgoResult> results;
-  for(int i = 0; i < algos.size(); i++){
-    RunAlgo(algos[i]);
-    results.push_back(result);
+  bool new_data_gen = false;
+  int loops = 1;
+  if(IsInt(algos[0]) != -1){
+    loops = IsInt(algos[0]);
+    algos.erase(algos.begin());
+    if(algos[0] == "true"){
+      new_data_gen = true;
+      algos.erase(algos.begin());
+    }
+  }
+  if(algos[0] == "all"){
+    algos.clear();
+    for(std::map<std::string, void (*)()>::iterator it = algorithms.begin(); it != algorithms.end(); ++it){
+      algos.push_back(it->first);
+    }
+  }
+  for(int i = 0; i < loops; i++){
+    if(new_data_gen == true){
+      GenData(-1,-1,-1);
+    }
+    for(int j = 0; j < algos.size(); j++){
+      RunAlgo(algos[j]);
+      if(results.size() <= j){
+        results.push_back(result);
+      } else{
+        results[j].time_elapsed += result.time_elapsed;
+        results[j].comparisons += result.comparisons;
+        results[j].vec_access += result.vec_access;
+      }
+    }
   }
   for(int i = 0; i < algos.size(); i++){
     while(algos[i].size() > 10){
@@ -123,9 +166,12 @@ void sort::Run(std::vector<std::string> algos){
       algos[i] += " ";
     }
   }
-  win.Print("\n\nAlgorithm    Sort Time             Comparisons   Array Access\n");
-  win.Print("-------------------------------------------------------------\n");
+  win.Print("\n\nAlgorithm    Sort Time             Raw Time   Comparisons   Array Access\n");
+  win.Print("----------------------------------------------------------------------------\n");
   for(int i = 0; i < results.size(); i++){
+    results[i].time_elapsed /= (double)loops;
+    results[i].comparisons /= loops;
+    results[i].vec_access /= loops;
     double dmin, dsec, dmilli_sec, dmicro_sec;
     double remaining_time = results[i].time_elapsed;
     dmin = floor(results[i].time_elapsed / 60.0);
@@ -137,6 +183,6 @@ void sort::Run(std::vector<std::string> algos){
     dmicro_sec = ceil(remaining_time);
     int min = dmin, sec = dsec, milli_sec = dmilli_sec,
         micro_sec = (int)dmicro_sec;
-    win.Print("%s   %.2im:%.2is:%.3ims:%.3ius   %.11i   %.12i\n", algos[i].c_str(), min, sec, milli_sec, micro_sec, results[i].comparisons, results[i].vec_access);
+    win.Print("%s   %.2im:%.2is:%.3ims:%.3ius   %.8f   %.11i   %.12i\n", algos[i].c_str(), min, sec, milli_sec, micro_sec, results[i].time_elapsed, results[i].comparisons, results[i].vec_access);
   }
 }

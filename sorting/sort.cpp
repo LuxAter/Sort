@@ -128,12 +128,6 @@ void sort::RunInput(std::string input) {
     for(std::map<std::string, void (*)()>::iterator it = algorithms.begin(); it != algorithms.end(); ++it){
       win.Print("%s\n", it->first.c_str());
     }
-  } else if(input == "all"){
-    std::vector<std::string> algos;
-    for(std::map<std::string, void(*)()>::iterator it = algorithms.begin(); it != algorithms.end(); ++it){
-      algos.push_back(it->first);
-    }
-    Run(algos);
   } else{
     std::vector<std::string> algos;
     std::string sub_string = "";
