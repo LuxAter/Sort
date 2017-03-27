@@ -13,8 +13,9 @@ namespace sort {
 }
 
 void sort::LoadAlgos() {
-  algorithms["quicksort"] = QuickSort;
-  algorithms["insertionsort"] = InsertionSort;  
+  algorithms["quick"] = QuickSort;
+  algorithms["insertion"] = InsertionSort;  
+  algorithms["merge"] = MergeSort;
 }
 
 bool sort::RunAlgo(std::string algo) {
