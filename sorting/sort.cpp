@@ -94,7 +94,7 @@ void sort::RunInput(std::string input) {
     running = false;
   } else if (input[0] == 'h' && input[1] == 'e' && input[2] == 'l' &&
              input[3] == 'p') {
-    input.erase(input.begin(), input.begin() + 5);
+    input.erase(input.begin(), input.begin() + 4);
     if (input.length() != 0) {
       Help(IsInt(input));
     } else {
@@ -104,7 +104,7 @@ void sort::RunInput(std::string input) {
     win.Clear();
   } else if (input[0] == 'd' && input[1] == 'a' && input[2] == 't' &&
              input[3] == 'a') {
-    input.erase(input.begin(), input.begin() + 5);
+    input.erase(input.begin(), input.begin() + 4);
     GenData(input);
   } else if(input == "check"){
     if(IsSorted() == true){
@@ -112,16 +112,17 @@ void sort::RunInput(std::string input) {
     }else{
       win.Print("The data set was not successfuly sorted\n");
     }
-  }else if (RunAlgo(input) == true) {
-  } else {
-    win.Print("\"%s\" is not a valid command\n", input.c_str());
+  } else if(input == "size"){
+    win.Print("Rows:%i\nCols:%i\n", std_scr.h, std_scr.w); 
+  }else{
+    RunAlgo(input);
   }
 }
 
 int sort::IsInt(std::string str) {
   bool good = true;
   for (int i = 0; i < str.length(); i++) {
-    if (int(str[i]) > 57 || int(str[i]) < 48) {
+    if ((int(str[i]) > 57 || int(str[i]) < 48) && str[i] != ' ') {
       good = false;
     }
   }

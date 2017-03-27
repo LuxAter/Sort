@@ -18,6 +18,7 @@ void sort::LoadAlgos() {
   algorithms["merge"] = MergeSort;
   algorithms["heap"] = HeapSort;
   algorithms["badsort"] = BadSort;
+  algorithms["selection"] = SelectionSort;
 }
 
 bool sort::RunAlgo(std::string algo) {
