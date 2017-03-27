@@ -32,36 +32,15 @@ bool sort::RunAlgo(std::string algo) {
     data = data_base;
     it->second();
     win.Print("Compleated %s\n", algo.c_str());
-    PrintResults();
     good = true;
   } else {
+    ClearResults();
     win.Print("%s is not a valid sorting algorithm\n", algo.c_str());
     good = false;
   }
   return (good);
 }
 
-void sort::PrintResults() {
-  double dmin, dsec, dmilli_sec, dmicro_sec;
-  double remaining_time = result.time_elapsed;
-  dmin = floor(result.time_elapsed / 60.0);
-  remaining_time = modf(remaining_time, &dsec);
-  dsec -= (dmin * 60);
-  remaining_time *= pow(10, 3);
-  remaining_time = modf(remaining_time, &dmilli_sec);
-  remaining_time *= pow(10, 3);
-  dmicro_sec = ceil(remaining_time);
-  int min = dmin, sec = dsec, milli_sec = dmilli_sec,
-      micro_sec = (int)dmicro_sec;
-  win.Print(
-      "[RESULTS]\nSort Time: %fs\nFormated Time: "
-      "%.2im:%.2is:%.3ims:%.3iµs\nComparisons: "
-      "%li\nArray "
-      "Access: "
-      "%li\n",
-      result.time_elapsed, min, sec, milli_sec, micro_sec, result.comparisons,
-      result.vec_access);
-}
 void sort::ClearResults() {
   result.time_elapsed = 0;
   result.comparisons = 0;
@@ -127,4 +106,36 @@ bool sort::IsSorted(){
 }
 
 void sort::BadSort(){
+}
+
+void sort::Run(std::vector<std::string> algos){
+  std::vector<AlgoResult> results;
+  for(int i = 0; i < algos.size(); i++){
+    RunAlgo(algos[i]);
+    results.push_back(result);
+  }
+  for(int i = 0; i < algos.size(); i++){
+    while(algos[i].size() > 10){
+      algos[i].pop_back();
+    }
+    while(algos[i].size() < 10){
+      algos[i] += " ";
+    }
+  }
+  win.Print("\n\nAlgorithm    Sort Time             Comparisons   Array Access\n");
+  win.Print("-------------------------------------------------------------\n");
+  for(int i = 0; i < results.size(); i++){
+    double dmin, dsec, dmilli_sec, dmicro_sec;
+    double remaining_time = results[i].time_elapsed;
+    dmin = floor(results[i].time_elapsed / 60.0);
+    remaining_time = modf(remaining_time, &dsec);
+    dsec -= (dmin * 60);
+    remaining_time *= pow(10, 3);
+    remaining_time = modf(remaining_time, &dmilli_sec);
+    remaining_time *= pow(10, 3);
+    dmicro_sec = ceil(remaining_time);
+    int min = dmin, sec = dsec, milli_sec = dmilli_sec,
+        micro_sec = (int)dmicro_sec;
+    win.Print("%s   %.2im:%.2is:%.3ims:%.3ius   %.11i   %.12i\n", algos[i].c_str(), min, sec, milli_sec, micro_sec, results[i].comparisons, results[i].vec_access);
+  }
 }

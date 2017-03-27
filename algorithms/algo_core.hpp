@@ -14,10 +14,10 @@ namespace sort {
   extern std::vector<int> data_base, data;
   void LoadAlgos();
   bool RunAlgo(std::string algo);
-  void PrintResults();
   void ClearResults();
   void GenData(std::string settings);
   bool IsSorted();
   void BadSort();
+  void Run(std::vector<std::string> algos);
 }
 #endif

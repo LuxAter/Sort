@@ -123,8 +123,26 @@ void sort::RunInput(std::string input) {
     for(int i = 0; i < data.size(); i++){
      win.Print("%i", data[i]);
     } 
-  }else{
-    RunAlgo(input);
+  } else if(input == "all"){
+    std::vector<std::string> algos;
+    for(std::map<std::string, void(*)()>::iterator it = algorithms.begin(); it != algorithms.end(); ++it){
+      algos.push_back(it->first);
+    }
+    Run(algos);
+  } else{
+    std::vector<std::string> algos;
+    std::string sub_string = "";
+    for(int i = 0; i < input.size(); i++){
+      if(input[i] == ' '){
+        algos.push_back(sub_string);
+        sub_string = "";
+      }
+      else{
+        sub_string += input[i];
+      }
+    }
+    algos.push_back(sub_string);
+    Run(algos);
   }
 }
 
