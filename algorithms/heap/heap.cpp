@@ -1,6 +1,6 @@
 #include <vector>
 #include <time.h>
-#include "algo_core.hpp"
+#include "../algo_core.hpp"
 #include "heap.hpp"
 
 void sort::HeapSort(){

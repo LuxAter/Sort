@@ -1,7 +1,7 @@
 #include "insertion.hpp"
 #include <vector>
 #include <time.h>
-#include "algo_core.hpp"
+#include "../algo_core.hpp"
 
 void sort::InsertionSort(){
   clock_t start = clock();

@@ -1,6 +1,6 @@
 #include <time.h>
 #include <vector>
-#include "algo_core.hpp"
+#include "../algo_core.hpp"
 #include "merge.hpp"
 
 void sort::MergeSort(){
