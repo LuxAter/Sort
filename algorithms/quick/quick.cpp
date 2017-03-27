@@ -1,7 +1,7 @@
+#include "quick.hpp"
 #include <time.h>
 #include <vector>
 #include "../algo_core.hpp"
-#include "quick.hpp"
 
 void sort::QuickSort() {
   clock_t start = clock();

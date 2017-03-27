@@ -3,8 +3,8 @@
 namespace sort{
   struct BinaryTree{
     int value;
-    BinaryTree* left = NULL;
-    BinaryTree* right = NULL;
+    BinaryTree* left;
+    BinaryTree* right;
   };
   void BinaryTreeSort();
   void InsertNode(BinaryTree* &tree, int new_value); 

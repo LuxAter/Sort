@@ -1,3 +1,4 @@
+#include "sort.hpp"
 #include <ncurses.h>
 #include <ostendo.h>
 #include <pessum.h>
@@ -5,7 +6,6 @@
 #include <iostream>
 #include <string>
 #include "../algorithms/algo_core.hpp"
-#include "sort.hpp"
 
 namespace sort {
   bool running = true;
@@ -17,8 +17,7 @@ using namespace ostendo;
 
 void sort::MainLoop() {
   running = true;
-  win.NewWindow(ostendo::std_scr.w, ostendo::std_scr.h,
-                0, 0);
+  win.NewWindow(ostendo::std_scr.w, ostendo::std_scr.h, 0, 0);
   win.ToggleTitle("Sorting Algorithms");
   win.ToggleBorder();
   win.ToggleScroll();
@@ -49,26 +48,26 @@ void sort::MainLoop() {
         input.pop_back();
         update = true;
       }
-    } else if(in == KEY_UP){
-      if(input_index > 0){
+    } else if (in == KEY_UP) {
+      if (input_index > 0) {
         input_index--;
         input = past_input[input_index];
         win.ClearLine();
         update = true;
       }
-    } else if(in == KEY_DOWN){
-      if(input_index < past_input.size() - 1){
+    } else if (in == KEY_DOWN) {
+      if (input_index < past_input.size() - 1) {
         input_index++;
         input = past_input[input_index];
         win.ClearLine();
         update = true;
-      }else if(input_index == past_input.size() - 1){
+      } else if (input_index == past_input.size() - 1) {
         input_index++;
         input = "";
         win.ClearLine();
         update = true;
       }
-    }else if (in != ERR) {
+    } else if (in != ERR) {
       input += char(in);
       win.SetCurs(-1, 1);
       update = true;
@@ -129,37 +128,39 @@ void sort::RunInput(std::string input) {
              input[3] == 'a') {
     input.erase(input.begin(), input.begin() + 4);
     GenData(input);
-  } else if(input == "check"){
-    if(IsSorted() == true){
+  } else if (input == "check") {
+    if (IsSorted() == true) {
       win.Print("The data set was successfuly sorted\n");
-    }else{
+    } else {
       win.Print("The data set was not successfuly sorted\n");
     }
-    if(data.size() < data_base.size()){
-      win.Print("Data was lost durring sorting%i->%i\n", data_base.size(), data.size());
-    }else if(data.size() > data_base.size()){
-      win.Print("Data was gained durring sorting%i->%i\n", data_base.size(), data.size());
+    if (data.size() < data_base.size()) {
+      win.Print("Data was lost durring sorting%i->%i\n", data_base.size(),
+                data.size());
+    } else if (data.size() > data_base.size()) {
+      win.Print("Data was gained durring sorting%i->%i\n", data_base.size(),
+                data.size());
     }
-  } else if(input == "size"){
-    win.Print("Rows:%i\nCols:%i\n", std_scr.h, std_scr.w); 
-  } else if(input == "print"){
-    for(int i = 0; i < data.size(); i++){
+  } else if (input == "size") {
+    win.Print("Rows:%i\nCols:%i\n", std_scr.h, std_scr.w);
+  } else if (input == "print") {
+    for (int i = 0; i < data.size(); i++) {
       win.Print("%i", data[i]);
     }
-    win.Print("\n"); 
-  } else if(input == "list"){
-    for(std::map<std::string, void (*)()>::iterator it = algorithms.begin(); it != algorithms.end(); ++it){
+    win.Print("\n");
+  } else if (input == "list") {
+    for (std::map<std::string, void (*)()>::iterator it = algorithms.begin();
+         it != algorithms.end(); ++it) {
       win.Print("%s\n", it->first.c_str());
     }
-  } else{
+  } else {
     std::vector<std::string> algos;
     std::string sub_string = "";
-    for(int i = 0; i < input.size(); i++){
-      if(input[i] == ' '){
+    for (int i = 0; i < input.size(); i++) {
+      if (input[i] == ' ') {
         algos.push_back(sub_string);
         sub_string = "";
-      }
-      else{
+      } else {
         sub_string += input[i];
       }
     }

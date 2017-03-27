@@ -1,6 +1,5 @@
 #ifndef QUICKSORT
 #define QUICKSORT
-#include <vector>
 namespace sort {
   void QuickSort();
   void QuickSortBase(int low, int high);

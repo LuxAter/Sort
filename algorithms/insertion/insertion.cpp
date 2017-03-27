@@ -1,16 +1,16 @@
 #include "insertion.hpp"
-#include <vector>
 #include <time.h>
+#include <vector>
 #include "../algo_core.hpp"
 
-void sort::InsertionSort(){
+void sort::InsertionSort() {
   clock_t start = clock();
-  for(int i = 1; i < data.size(); i++){
+  for (int i = 1; i < data.size(); i++) {
     int j = i;
-    result.vec_access+=2;
+    result.vec_access += 2;
     result.comparisons++;
-    while(j > 0 && data[j-1] > data[j]){
-      result.vec_access+=2;
+    while (j > 0 && data[j - 1] > data[j]) {
+      result.vec_access += 2;
       iter_swap(data.begin() + j, data.begin() + j - 1);
       j--;
     }

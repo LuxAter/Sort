@@ -1,7 +1,7 @@
+#include "selection.hpp"
 #include <time.h>
 #include <vector>
 #include "../algo_core.hpp"
-#include "selection.hpp"
 
 void sort::SelectionSort(){
   clock_t start = clock();

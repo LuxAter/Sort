@@ -1,9 +1,9 @@
+#include "algo_core.hpp"
 #include <math.h>
 #include <map>
 #include <string>
 #include <vector>
 #include "../sorting/sort.hpp"
-#include "algo_core.hpp"
 #include "algorithm_headers.hpp"
 
 namespace sort {
@@ -15,7 +15,7 @@ namespace sort {
 
 void sort::LoadAlgos() {
   algorithms["quick"] = QuickSort;
-  algorithms["insertion"] = InsertionSort;  
+  algorithms["insertion"] = InsertionSort;
   algorithms["merge"] = MergeSort;
   algorithms["heap"] = HeapSort;
   algorithms["badsort"] = BadSort;
@@ -93,84 +93,89 @@ void sort::GenData(std::string settings) {
   GenData(count, min, max);
 }
 
-void sort::GenData(int count, int min, int max){
-  if(count == -1){
+void sort::GenData(int count, int min, int max) {
+  if (count == -1) {
     count = data_count;
   }
-  if(min == -1){
+  if (min == -1) {
     min = data_min;
   }
-  if(max == -1){
+  if (max == -1) {
     max = data_max;
   }
   data_count = count;
   data_min = min;
   data_max = max;
-  win.Print("Generating Data...\n%i values between:\n(%i-%i)\n", data_count, data_min, data_max);
+  win.Print("Generating Data...\n%i values between:\n(%i-%i)\n", data_count,
+            data_min, data_max);
   data_base.clear();
   int range = max - min;
-  for(int i = 0; i < data_count; i++){
+  for (int i = 0; i < data_count; i++) {
     data_base.push_back(min + (rand() % range));
   }
 }
 
-bool sort::IsSorted(){
+bool sort::IsSorted() {
   bool good = true;
-  for(int i = 1; i < data.size() && good == true; i++){
-    if(data[i] < data[i-1]){
+  for (int i = 1; i < data.size() && good == true; i++) {
+    if (data[i] < data[i - 1]) {
       good = false;
     }
   }
-  return(good);
+  return (good);
 }
 
-void sort::BadSort(){
-}
+void sort::BadSort() {}
 
-void sort::Run(std::vector<std::string> algos){
+void sort::Run(std::vector<std::string> algos) {
   std::vector<AlgoResult> results;
   bool new_data_gen = false;
   int loops = 1;
-  if(IsInt(algos[0]) != -1){
+  if (IsInt(algos[0]) != -1) {
     loops = IsInt(algos[0]);
     algos.erase(algos.begin());
-    if(algos[0] == "true"){
+    if (algos[0] == "true") {
       new_data_gen = true;
       algos.erase(algos.begin());
     }
   }
-  if(algos[0] == "all"){
+  if (algos[0] == "all") {
     algos.clear();
-    for(std::map<std::string, void (*)()>::iterator it = algorithms.begin(); it != algorithms.end(); ++it){
+    for (std::map<std::string, void (*)()>::iterator it = algorithms.begin();
+         it != algorithms.end(); ++it) {
       algos.push_back(it->first);
     }
   }
-  for(int i = 0; i < loops; i++){
-    if(new_data_gen == true){
-      GenData(-1,-1,-1);
+  for (int i = 0; i < loops; i++) {
+    if (new_data_gen == true) {
+      GenData(-1, -1, -1);
     }
-    for(int j = 0; j < algos.size(); j++){
+    for (int j = 0; j < algos.size(); j++) {
       RunAlgo(algos[j]);
-      if(results.size() <= j){
+      if (results.size() <= j) {
         results.push_back(result);
-      } else{
+      } else {
         results[j].time_elapsed += result.time_elapsed;
         results[j].comparisons += result.comparisons;
         results[j].vec_access += result.vec_access;
       }
     }
   }
-  for(int i = 0; i < algos.size(); i++){
-    while(algos[i].size() > 10){
+  for (int i = 0; i < algos.size(); i++) {
+    while (algos[i].size() > 10) {
       algos[i].pop_back();
     }
-    while(algos[i].size() < 10){
+    while (algos[i].size() < 10) {
       algos[i] += " ";
     }
   }
-  win.Print("\n\nAlgorithm    Sort Time             Raw Time   Comparisons   Array Access\n");
-  win.Print("------------------------------------------------------------------------\n");
-  for(int i = 0; i < results.size(); i++){
+  win.Print(
+      "\n\nAlgorithm    Sort Time             Raw Time   Comparisons   Array "
+      "Access\n");
+  win.Print(
+      "------------------------------------------------------------------------"
+      "\n");
+  for (int i = 0; i < results.size() && i < algos.size(); i++) {
     results[i].time_elapsed /= (double)loops;
     results[i].comparisons /= loops;
     results[i].vec_access /= loops;
@@ -185,6 +190,9 @@ void sort::Run(std::vector<std::string> algos){
     dmicro_sec = ceil(remaining_time);
     int min = dmin, sec = dsec, milli_sec = dmilli_sec,
         micro_sec = (int)dmicro_sec;
-    win.Print("%s   %.2im:%.2is:%.3ims:%.3ius   %f   %.11i   %.12i\n", algos[i].c_str(), min, sec, milli_sec, micro_sec, results[i].time_elapsed, results[i].comparisons, results[i].vec_access);
+    win.Print("%s   %.2im:%.2is:%.3ims:%.3ius   %f   %.11i   %.12i\n",
+              algos[i].c_str(), min, sec, milli_sec, micro_sec,
+              results[i].time_elapsed, results[i].comparisons,
+              results[i].vec_access);
   }
 }
