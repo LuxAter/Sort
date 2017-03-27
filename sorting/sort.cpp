@@ -112,8 +112,17 @@ void sort::RunInput(std::string input) {
     }else{
       win.Print("The data set was not successfuly sorted\n");
     }
+    if(data.size() < data_base.size()){
+      win.Print("Data was lost durring sorting%i->%i\n", data_base.size(), data.size());
+    }else if(data.size() > data_base.size()){
+      win.Print("Data was gained durring sorting%i->%i\n", data_base.size(), data.size());
+    }
   } else if(input == "size"){
     win.Print("Rows:%i\nCols:%i\n", std_scr.h, std_scr.w); 
+  } else if(input == "print"){
+    for(int i = 0; i < data.size(); i++){
+     win.Print("%i", data[i]);
+    } 
   }else{
     RunAlgo(input);
   }

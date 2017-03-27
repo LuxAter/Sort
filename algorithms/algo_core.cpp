@@ -19,6 +19,7 @@ void sort::LoadAlgos() {
   algorithms["heap"] = HeapSort;
   algorithms["badsort"] = BadSort;
   algorithms["selection"] = SelectionSort;
+  algorithms["binarytree"] = BinaryTreeSort;
 }
 
 bool sort::RunAlgo(std::string algo) {
