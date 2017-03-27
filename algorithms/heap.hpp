@@ -1,6 +1,7 @@
 #ifndef HEAPSORT
 #define HEAPSORT
 namespace sort{
-  void Heapsort();
+  void HeapSort();
+  void Heapify(int root, int length);
 }
 #endif

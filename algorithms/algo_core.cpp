@@ -16,6 +16,8 @@ void sort::LoadAlgos() {
   algorithms["quick"] = QuickSort;
   algorithms["insertion"] = InsertionSort;  
   algorithms["merge"] = MergeSort;
+  algorithms["heap"] = HeapSort;
+  algorithms["badsort"] = BadSort;
 }
 
 bool sort::RunAlgo(std::string algo) {
@@ -120,4 +122,7 @@ bool sort::IsSorted(){
     }
   }
   return(good);
+}
+
+void sort::BadSort(){
 }
