@@ -24,6 +24,7 @@ void sort::LoadAlgos() {
   algorithms["bubble"] = BubbleSort;
   algorithms["cocktail"] = CocktailSort;
   algorithms["comb"] = CombSort;
+  algorithms["cycle"] = CycleSort;
 }
 
 bool sort::RunAlgo(std::string algo) {

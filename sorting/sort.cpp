@@ -145,7 +145,7 @@ void sort::RunInput(std::string input) {
     win.Print("Rows:%i\nCols:%i\n", std_scr.h, std_scr.w);
   } else if (input == "print") {
     for (int i = 0; i < data.size(); i++) {
-      win.Print("%i", data[i]);
+      win.Print("%i,", data[i]);
     }
     win.Print("\n");
   } else if (input == "list") {

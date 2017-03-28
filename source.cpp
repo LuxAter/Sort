@@ -8,6 +8,7 @@ int main(int argc, char const* argv[]) {
   pessum::InitializePessum(true, true);
   ostendo::InitOstendo(1);
   ostendo::SetLogHandle(pessum::logging::Log);
+  srand(time(NULL));
   sort::MainLoop();
   ostendo::TermOstendo();
   pessum::TerminatePessum();
