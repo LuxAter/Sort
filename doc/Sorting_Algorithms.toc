@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}Comparison Sorting Algorithms}{2}
+\contentsline {subsection}{\numberline {1.1}Binary Tree Sort}{3}
+\contentsline {subsection}{\numberline {1.2}Bubble Sort}{5}
+\contentsline {section}{Appendices}{7}
+\contentsline {section}{\numberline {A}Algorithms}{7}
+\contentsline {subsection}{\numberline {A.1}Binary Tree Sort}{7}
+\contentsline {subsubsection}{\numberline {A.1.1}C++}{7}
+\contentsline {subsection}{\numberline {A.2}Bubble Sort}{9}
+\contentsline {subsubsection}{\numberline {A.2.1}C++}{9}
