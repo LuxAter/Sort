@@ -55,4 +55,52 @@
 \end{algorithmic}
 \end{algorithm}
 \newpage
+\begin{multicols}{2}
+  \begin{tikzpicture}
+    \begin{axis}[scaled ticks=false,
+        width=\linewidth,
+        samples=100,
+        xmin=1,
+        xmax=100,
+        ymin=0,
+        ymax=1000,
+        domain=1:100,
+        restrict y to domain=0:1000,
+        xlabel={$Elements$},
+        ylabel={$Operations$},
+        xticklabels={,,},
+        yticklabels={,,},
+      ]
+      \addplot[color=red]{x^2};
+      \addlegendentry{$n^2$}
+      \addplot[color=yellow]{x * log10(x)};
+      \addlegendentry{$n\log(n)$}
+      \addplot[color=green]{x * log10(x)};
+      \addlegendentry{$n\log(n)$}
+      \addplot[color=blue]{x};
+      \addlegendentry{$n$}
+    \end{axis}
+  \end{tikzpicture}
+  \par
+  This is a plot of the theoretical run times for Binary tree sort for increasing numbers of elements in the array. The worst case run times grow extreamly rapidly compaired to the averge and best case run times (which are the same). The rate of growth for the worst case run time is very poor, and the average and best case run times are still not optimal, and grow quickly. The plot for the space complexity also grows quite rapidly.
+\end{multicols}
+\begin{multicols}{2}
+  \begin{tikzpicture} 
+    \begin{axis}[scaled ticks=false,
+        width=\linewidth,
+        samples=100,
+        xmin=1,
+        xmax=100,
+        domain=1:100,
+        restrict y to domain=0:1000,
+        xlabel={$Elements$},
+        ylabel={$Operations$},
+        xticklabels={,,},
+        yticklabels={,,},
+      ]
+      \addplot+[color=red] table[x=n,y=time] {comparison_sorts/binary_tree/data.dat};
+    \end{axis}
+  \end{tikzpicture}
+\end{multicols}
+\newpage
 \end{document}

@@ -5,6 +5,8 @@
 #include <vector>
 namespace sort {
   struct AlgoResult {
+    std::string name;
+    int min, sec, milli_sec, micro_sec;
     double time_elapsed;
     long int comparisons;
     long int vec_access;
@@ -21,5 +23,7 @@ namespace sort {
   bool IsSorted();
   void BadSort();
   void Run(std::vector<std::string> algos);
+  AlgoResult FormatTime(AlgoResult time);
+  void SaveData();
 }
 #endif

@@ -1,0 +1,52 @@
+\documentclass{subfile}
+\begin{document}
+\subsection{Cocktail Sort}\label{C:CT}
+\begin{align*}
+  \text{Best-Case Performance}\quad &O\left(n\right)\\
+  \text{Average Performance}\quad &O\left(n^{2}\right)\\
+  \text{Worst-Case Performance}\quad &O\left(n^{2}\right)\\
+  \text{Worst-Case Space Complexity}\quad &O\left(1\right)
+\end{align*}
+\begin{multicols}{2}
+  Cocktail sort is an algorithm that attempts to improve upon Bubble sort (\ref{C:B}). Cocktail sort aims to improve on bubble sort by allowing bidirectional movement. Similar to Bubble sort, Cocktail sort swaps two unordered elements at a time, however the advantage for this algorithm is that it moves forwards and backwards along the list for each pass. This bidirectional movement means that Cocktail sort does not have the ``turtles'' that bubble sort has. This means that this algorithm can run somewhat faster than the basic bubble sort, and the implementation is only slightly more complicated.
+  \par
+  Cocktail sort does not improve on the asymptotic performance of bubble sort, as the worst and best case performance is the same as for bubble sort. Typically Cocktail sort provides very slight running time reduction over Bubble sort, and is commonly less than two time faster than Bubble sort. This means that Cocktail sort is also not an effective sorting algorithm for much more than simple demonstrations, and some educational proposes. 
+  \par
+  Pseudocode for the Cocktail Sort algorithm is shown below in Algorithm \ref{C:CT:1}. The function starts with creating a start and end point to the passes ($start$, $end$), because like Bubble sort, once there are no more swaps beyond a point in the array, then that portion is correctly sorted. With this fact, this algorithm is able to reduce the pass ares on both ends, because both sides of the array are being correctly sorted. This means that the ends can be reduced. While there is at least one swap, that means that the array is not sorted, so the algorithm loops until no swaps occur. The algorithm then does the first half of the pass, where it begin from the start position ($start$) and goes until the end position ($end$). This loop is the same as normal bubble sort algorithm, swapping unordered items, and reducing the end point accordingly. Then the algorithm does the second half of the pass, where it begins from the new end position ($end$) and goes until the start position ($start$). This is again the same as bubble sort, just reversed. These passes are made until no swaps occur, which indicates that the array is sorted.
+  \par
+  Source code examples of Cocktail sort can be found in \ref{APENDIX:CT}.
+\end{multicols}
+\newpage
+\begin{algorithm}
+  \caption{Cocktail Sort Pseudocode}\label{C:CT:1}
+  \begin{algorithmic}[1]
+    \Function{Cocktail}{$a$}
+      \State $swapped\gets true$
+      \State $start\gets 0$
+      \State $end\gets$length($a$)
+      \While {$swapped = true$}
+        \State $swapped\gets false$
+        \State $newStart\gets start$
+        \State $newEnd\gets end$
+        \For{$i\gets start$ to $end$}
+          \If{$a[i]>a[i+1]$}
+            \State Swap($a[i]$,$a[i+1]$)
+            \State $swapped\gets true$
+            \State $newEnd\gets i$
+          \EndIf
+        \EndFor
+        \State $end\gets newEnd$
+        \For{$i\gets end$ to $start$}
+          \If{$a[i]>a[i+1]$}
+            \State Swap($a[i]$,$a[i+1]$)
+            \State $swapped\gets true$
+            \State $newStart\gets i$
+          \EndIf
+        \EndFor
+        \State $start\gets newStart$
+      \EndWhile
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+\newpage
+\end{document}

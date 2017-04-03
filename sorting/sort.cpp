@@ -153,7 +153,9 @@ void sort::RunInput(std::string input) {
          it != algorithms.end(); ++it) {
       win.Print("%s\n", it->first.c_str());
     }
-  } else {
+  } else if(input == "save"){
+    SaveData();
+  }else {
     std::vector<std::string> algos;
     std::string sub_string = "";
     for (int i = 0; i < input.size(); i++) {
