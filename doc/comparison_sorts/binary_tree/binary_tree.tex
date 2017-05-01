@@ -88,17 +88,12 @@
   \begin{tikzpicture} 
     \begin{axis}[scaled ticks=false,
         width=\linewidth,
-        samples=100,
-        xmin=1,
-        xmax=100,
-        domain=1:100,
-        restrict y to domain=0:1000,
         xlabel={$Elements$},
         ylabel={$Operations$},
-        xticklabels={,,},
-        yticklabels={,,},
       ]
-      \addplot+[color=red] table[x=n,y=time] {comparison_sorts/binary_tree/data.dat};
+      \addplot+[color=red, mark=none] table[x=n,y=time] {comparison_sorts/binary_tree/data.dat};
+      \addplot+[color=green, mark=none] table[x=n,y=comparisons] {comparison_sorts/binary_tree/data.dat};
+      \addplot+[color=blue, mark=none] table[x=n,y=vec_access] {comparison_sorts/binary_tree/data.dat};
     \end{axis}
   \end{tikzpicture}
 \end{multicols}
