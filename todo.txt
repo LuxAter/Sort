@@ -1,0 +1,23 @@
+[X] Binarytree
+[ ] Block
+[X] Bubble
+[X] Cocktail
+[X] Comb
+[ ] Cube
+[X] Cycle
+[ ] Gnome
+[X] Heap
+[ ] In-Place-Merge
+[X] Insertion
+[ ] Intro
+[ ] Library
+[X] Merge
+[ ] Odd-Even
+[ ] Patience
+[X] Quick
+[X] Selection
+[ ] Shell
+[ ] Smooth
+[ ] Strand
+[ ] Tim
+[ ] Tournament
