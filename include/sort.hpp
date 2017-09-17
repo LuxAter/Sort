@@ -25,12 +25,20 @@ enum Algorithms {
   GNOME,
   UNSHUFFLE,
   BLOCK,
-  ODD_EVEN
+  ODD_EVEN,
+  NONE
 };
 
 extern std::map<unsigned int, std::string> algorithm_names;
-extern int cdot;
 
 int RunAlgo(unsigned int algo, std::vector<int> data);
 
-void Print(bool running, unsigned int algo, int dot);
+void Print(std::vector<std::array<unsigned int, 2>> algos, bool first = false);
+
+void PrintResults(
+    std::vector<std::pair<unsigned int, std::vector<int>>> results);
+
+void CalculateResults(
+    std::vector<std::pair<unsigned int, std::vector<int>>>* results);
+
+void Run();

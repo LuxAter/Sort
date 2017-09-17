@@ -8,6 +8,7 @@ int main(int argc, char const* argv[]) {
   // std::cout << cli::Blue("Hello");
   // RunAlgo(1985, {});
   // RunAlgo(QUICK, {});
+  Run();
   /* code */
   return 0;
 }
