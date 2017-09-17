@@ -2,7 +2,7 @@ SHELL = /bin/bash
 
 export NAME= sort
 export LINK= 
-export INCLUDE=
+export INCLUDE= -I$(BASE_PATH)/$(EXTERNAL_DIR)/cli/include
 export TYPE= exe
 
 export SOURCE_DIR= source
@@ -56,10 +56,10 @@ printf "%b%*s%b: %s\n" "$(TARGET_COLOR)" 14 "$(1)" "$(NO_COLOR)" "$(2)"
 endef
 
 .PHONY : all
-all: external source test
+all:  source
 
 .PHONY : clean
-clean: clean-external clean-source clean-test
+clean: clean-source
 
 .PHONY : install
 install: source root-access install-source
