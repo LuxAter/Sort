@@ -11,6 +11,8 @@
 #include "cursor.hpp"
 #include "output.hpp"
 
+#include "algo/algos.hpp"
+
 std::map<unsigned int, std::string> algorithm_names = {
     {QUICK, "Quicksort"},
     {MERGE, "Merge Sort"},
@@ -36,34 +38,18 @@ std::map<unsigned int, std::string> algorithm_names = {
     {BLOCK, "Block Sort"},
     {ODD_EVEN, "Odd-Even Sort"}};
 
-// std::map<unsigned int, std::string> algorithm_names = {
-// {QUICK, "Quicksort"},
-// {MERGE, "Merge Sort"},
-// {HEAP, "Heapsort"},
-// {INSERTION, "Insertion Sort"},
-// {INTRO, "Introsort"},
-// {SELECTION, "Selection Sort"},
-// {TIM, "Timsort"},
-// {CUBE, "Cubesort"},
-// {SHELL, "Shell Sort"},
-// {BUBBLE, "Bubble Sort"},
-// {BINARY_TREE, "Binary Tree Sort"},
-// {CYCLE, "Cycle Sort"},
-// {LIBRARY, "Library Sort"},
-// {PATIENCE, "Patience Sort"},
-// {SMOOTH, "Smoothsort"},
-// {STRAND, "Strand Sort"},
-// {TOURNAMENT, "Tournamet Sort"},
-// {COCKTAIL, "Cocktail Sort"},
-// {COMB, "Comb Sort"},
-// {GNOME, "Gnome Sort"},
-// {UNSHUFFLE, "UnShuffle Sort"},
-// {BLOCK, "Block Sort"},
-// {ODD_EVEN, "Odd-Even Sort"}};
+std::map<unsigned int, std::function<std::array<int, 2>(void)>> algorithm_run =
+    {{QUICK, quick::Run}, {BUBBLE, bubble::Run}};
 
-int RunAlgo(unsigned int algo, std::vector<int> data) {
+std::vector<int> data, backup;
+
+int RunAlgo(unsigned int algo) {
   clock_t start, end;
   start = clock();
+  if (algorithm_run.find(algo) != algorithm_run.end()) {
+    algorithm_run[algo]();
+  }
+  data = backup;
   end = clock();
   return end - start;
 }
@@ -150,13 +136,14 @@ void CalculateResults(
       it->second = {-1, -1, -1};
     } else {
       std::sort(it->second.begin(), it->second.end());
-      double average;
+      double average = 0.0;
       for (std::vector<int>::iterator vit = it->second.begin();
            vit != it->second.end(); ++vit) {
         average += (*vit);
       }
       average /= (double)it->second.size();
       it->second.insert(it->second.begin(), (int)average);
+      average = 0.0;
     }
   }
 }
@@ -164,6 +151,10 @@ void CalculateResults(
 void Run() {
   int loops = 5;
   std::cout << cli::White("Running Sorting Algorithms") << "\n";
+  for (int i = 0; i < 10000; i++) {
+    data.push_back(rand());
+  }
+  backup = data;
   std::vector<std::array<unsigned int, 2>> algos;
   std::vector<std::pair<unsigned int, std::vector<int>>> results;
   for (std::map<unsigned int, std::string>::iterator it =
@@ -171,14 +162,13 @@ void Run() {
        it != algorithm_names.end(); ++it) {
     algos.push_back({2, it->first});
   }
-  algos.push_back({2, NONE});
   Print(algos, true);
   for (int i = 0; i < algos.size(); i++) {
     std::pair<unsigned int, std::vector<int>> algo_result = {algos[i][1], {}};
     algos[i][0] = 0;
     Print(algos);
     for (int j = 0; j < loops; j++) {
-      algo_result.second.push_back(RunAlgo(algos[i][1], {}));
+      algo_result.second.push_back(RunAlgo(algos[i][1]));
     }
     algos[i][0] = 1;
     results.push_back(algo_result);

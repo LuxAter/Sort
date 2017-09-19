@@ -1,3 +1,4 @@
+#include <functional>
 #include <map>
 #include <string>
 #include <vector>
@@ -30,6 +31,10 @@ enum Algorithms {
 };
 
 extern std::map<unsigned int, std::string> algorithm_names;
+extern std::map<unsigned int, std::function<std::array<int, 2>()>>
+    algorithm_run;
+
+extern std::vector<int> data, backup;
 
 int RunAlgo(unsigned int algo, std::vector<int> data);
 
