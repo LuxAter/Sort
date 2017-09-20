@@ -1,2 +1,3 @@
-#include "algo/bubble.hpp"
-#include "algo/quick.hpp"
+#include "bubble.hpp"
+#include "merge.hpp"
+#include "quick.hpp"

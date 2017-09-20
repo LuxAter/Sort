@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+enum Status { NOTFOUND, RUNNING, COMPLETED, QUEUED, FAILED };
+
 enum Algorithms {
   QUICK,
   MERGE,
@@ -36,7 +38,13 @@ extern std::map<unsigned int, std::function<std::array<int, 2>()>>
 
 extern std::vector<int> data, backup;
 
-int RunAlgo(unsigned int algo, std::vector<int> data);
+void Pause();
+
+void PrintData();
+
+bool CheckSort();
+
+std::array<int, 4> RunAlgo(unsigned int algo, std::vector<int> data);
 
 void Print(std::vector<std::array<unsigned int, 2>> algos, bool first = false);
 

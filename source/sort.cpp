@@ -39,19 +39,48 @@ std::map<unsigned int, std::string> algorithm_names = {
     {ODD_EVEN, "Odd-Even Sort"}};
 
 std::map<unsigned int, std::function<std::array<int, 2>(void)>> algorithm_run =
-    {{QUICK, quick::Run}, {BUBBLE, bubble::Run}};
+    {{QUICK, quick::Run}, {BUBBLE, bubble::Run}, {MERGE, merge::Run}};
 
 std::vector<int> data, backup;
 
-int RunAlgo(unsigned int algo) {
-  clock_t start, end;
-  start = clock();
+void Pause() { std::cin.ignore(); }
+
+void PrintData() {
+  for (int i = 0; i < data.size(); i++) {
+    std::cout << data[i];
+    if (i != data.size() - 1) {
+      std::cout << ",";
+    }
+  }
+  std::cout << "\n";
+}
+
+bool CheckSort() {
+  for (int i = 1; i < data.size(); i++) {
+    if (data[i] <= data[i - 1]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+std::array<int, 4> RunAlgo(unsigned int algo) {
+  unsigned int status;
+  std::array<int, 2> trace = {{1, 1}};
+  clock_t start = 0, end = 0;
   if (algorithm_run.find(algo) != algorithm_run.end()) {
-    algorithm_run[algo]();
+    start = clock();
+    trace = algorithm_run[algo]();
+    end = clock();
+    status = COMPLETED;
+    if (CheckSort() == false) {
+      status = FAILED;
+    }
+  } else {
+    status = NOTFOUND;
   }
   data = backup;
-  end = clock();
-  return end - start;
+  return {{status, end - start, trace[0], trace[1]}};
 }
 
 void Print(std::vector<std::array<unsigned int, 2>> algos, bool first) {
@@ -60,18 +89,22 @@ void Print(std::vector<std::array<unsigned int, 2>> algos, bool first) {
   }
   for (std::vector<std::array<unsigned int, 2>>::iterator it = algos.begin();
        it != algos.end(); ++it) {
-    if ((*it)[1] > 22) {
-      std::cout << cli::Bold(cli::Red("[ Error      ]")) << " "
+    if ((*it)[1] > 22 || (*it)[0] == NOTFOUND) {
+      (*it)[0] = NOTFOUND;
+      std::cout << cli::Bold(cli::Red("[ Invalid   ]")) << " "
                 << cli::Magenta(std::to_string((*it)[1]))
                 << " is not a valid algorithm\n";
-    } else if ((*it)[0] == 0) {
-      std::cout << cli::Bold(cli::Yellow("[ Running    ]")) << " "
+    } else if ((*it)[0] == RUNNING) {
+      std::cout << cli::Bold(cli::Yellow("[ Running   ]")) << " "
                 << cli::Blue(algorithm_names[(*it)[1]]) << "\n";
-    } else if ((*it)[0] == 1) {
-      std::cout << cli::Bold(cli::Green("[ Compleated ]")) << " "
+    } else if ((*it)[0] == COMPLETED) {
+      std::cout << cli::Bold(cli::Green("[ Completed ]")) << " "
                 << cli::Blue(algorithm_names[(*it)[1]]) << "\n";
-    } else if ((*it)[0] == 2) {
-      std::cout << cli::Bold(cli::Magenta("[ Queued     ]")) << " "
+    } else if ((*it)[0] == QUEUED) {
+      std::cout << cli::Bold(cli::Magenta("[ Queued    ]")) << " "
+                << cli::Blue(algorithm_names[(*it)[1]]) << "\n";
+    } else if ((*it)[0] == FAILED) {
+      std::cout << cli::Bold(cli::Red("[ Failed    ]")) << " "
                 << cli::Blue(algorithm_names[(*it)[1]]) << "\n";
     }
   }
@@ -149,8 +182,12 @@ void CalculateResults(
 }
 
 void Run() {
-  int loops = 5;
+  int loops = 1;
   std::cout << cli::White("Running Sorting Algorithms") << "\n";
+  // data = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  // data = {0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12,
+  // 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
+  std::random_shuffle(data.begin(), data.end());
   for (int i = 0; i < 10000; i++) {
     data.push_back(rand());
   }
@@ -160,17 +197,18 @@ void Run() {
   for (std::map<unsigned int, std::string>::iterator it =
            algorithm_names.begin();
        it != algorithm_names.end(); ++it) {
-    algos.push_back({2, it->first});
+    algos.push_back({QUEUED, it->first});
   }
   Print(algos, true);
   for (int i = 0; i < algos.size(); i++) {
     std::pair<unsigned int, std::vector<int>> algo_result = {algos[i][1], {}};
-    algos[i][0] = 0;
+    algos[i][0] = RUNNING;
     Print(algos);
     for (int j = 0; j < loops; j++) {
-      algo_result.second.push_back(RunAlgo(algos[i][1]));
+      std::array<int, 4> ret = RunAlgo(algos[i][1]);
+      algos[i][0] = ret[0];
+      algo_result.second.push_back(ret[1]);
     }
-    algos[i][0] = 1;
     results.push_back(algo_result);
   }
   Print(algos);
