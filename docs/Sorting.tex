@@ -1,0 +1,98 @@
+\documentclass[10pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{subfiles}
+\usepackage{titleps}
+\usepackage{multicol,caption}
+\usepackage{listings}
+\usepackage[toc,page]{appendix}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepackage{minitoc}
+\pgfplotsset{compat=1.13}
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+\lstset{%
+  title=\lstname,
+  backgroundcolor=\color{white},
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  commentstyle=\color{green},
+  extendedchars=true,
+  frame=single,
+  keepspaces=true,
+  keywordstyle=\color{blue},
+  language=C++,
+  numbers=left,
+  numberstyle=\tiny\color{black},
+  rulecolor=\color{black},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=1,
+  stringstyle=\color{magenta},
+  tabsize=2
+  }
+
+\newpagestyle{doc}{
+  \headrule{}
+  \footrule{}
+  \sethead{\thesection\quad \sectiontitle}{}{\thesubsection\quad
+  \subsectiontitle}
+  \setfoot{}{\thepage}{}
+}
+\newpagestyle{toc}{
+  \headrule{}
+  \footrule{}
+  \sethead{CONTENTS}{}{}
+  \setfoot{}{\thepage}{}
+}
+\newpagestyle{abs}{
+  \headrule{}
+  \footrule{}
+  \sethead{ABSTRACT}{}{}
+  \setfoot{}{\thepage}{}
+}
+\pagestyle{doc}
+
+\renewcommand{\thealgorithm}{\arabic{section}.\arabic{subsection}.\Alph{algorithm}}
+
+\title{Sorting Algorithms}
+\author{Arden Rasmussen}
+\date{\today}
+\linespread{1}
+\setcounter{tocdepth}{2}
+
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+\newpage
+\pagestyle{toc}
+\dosecttoc
+\tableofcontents
+\newpage
+\pagestyle{abs}
+\pagenumbering{arabic}
+\begin{abstract}
+  Sorting algorithms are used in many aspects of the modern computational
+  world, and vital for data sciences. However, with the vast variety of
+  different sorting algorithms, it is important to beable to utilize the
+  algoritalgorithm that is best suited for a data set, instead of applying a
+  general solution that will at a sub optimal rate. This paper aims to calsify
+  a wide selecton of sorting algorithms for the different data sets that they
+  are most optimaly used in conjunction with.
+\end{abstract}
+\newpage
+\pagestyle{doc}
+\subfile{comparison/comparison_sort.tex}
+\newpage
+\subfile{appendix/appendix.tex}
+\end{document}
