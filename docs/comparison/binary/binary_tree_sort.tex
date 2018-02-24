@@ -1,130 +1,41 @@
 \documentclass{subfile}
 
 \begin{document}
-   \subsection{Bubble Sort}
-   \label{sub:bubble_sort}
+   \subsection{Binary Tree Sort}\label{sub:binary_tree_sort}
    
    \begin{align*}
-     \text{Best-Case Preformance}\quad &O\left(n\right)\\
-     \text{Average Preformance}\quad &O\left(n^2\right)\\
+     \text{Best-Case Preformance}\quad &O\left(n \log n\right)\\
+     \text{Average Preformance}\quad &O\left(n \log n\right)\\
      \text{Worst-Case Preformance}\quad &O\left(n^2\right)\\
-     \text{Worst-Case Space Complexity}\quad &O\left(1\right)
+     \text{Worst-Case Space Complexity}\quad &O\left(n\right)
    \end{align*}
 
    \begin{multicols}{2}
-     \subsubsection{Introduction}
-     \label{ssub:introduction}
+     \subsubsection{Introduction}\label{ssub:introduction}
      
-     Bubble sort is an algorithm that goes item by item, sorting pairs of two
-     adjacent items at a time. This is where the name \textit{Bubble sort}
-     originates from, due to the fact that the algorithm creates bubbles around
-     two adjacent items at a time and conly considers the order of these two.
-     This is one of simplest comprison sorting algorithms, as it can be
-     inplemented in a few number o flines of code, and is simple to
-     conceptualize. The algorithm runs through the list of items swaping pairs
-     as needed, untill no more swaps were made on a single pass, which would
-     mean that each item is in its position.
 
-     The worst case complexity of bubble sort is $O(n^2)$, because each item
-     can only be moved one positon in a pass, meaning that for each item
-     that is out of position must be slowly moved into position. For even
-     relativly small lists of data, this can take times which are far to large
-     to be useful beyond a demonstration. There is one case where bubble sort
-     can provide an advantage over other sorting algorithms. Because the entire
-     process of the sotring, is checking if the items are in a sorted order,
-     if the list is already in a sorted order, Bubble sort will make a single
-     pass testing if everything is in a sorted order. After it finishes the
-     single pass it will determin that the list is already sorted, and end.
-
-     Bubble sort has two elements that cause sorting to be extreamly slowed.
-     These are ``turtles'', and ``rabbits''.
-     
-     ``Rabbits'' are elements that are at the beginnging of the list and belong
-     at the end of the list. Because bubble sort moves from the first to the
-     last element on a repeating order, these ``rabbits'' will quickly move
-     from the front to the end, because everytime they are compaired to a
-     nother value, they are found to be greater than that value, and are
-     swaped, until they reach their final position. They are called
-     ``rabbits'' due to the fact that they will move to their final destination
-     on the furst pass, unless a ``faster rabbit'' is found. Below is an
-     example of a ``rabbit'', where $9$ is the ``rabbit''.
-
-     \begin{align*}
-       925580\\
-       \textcolor{red}{92}5580\\
-       2\textcolor{red}{95}580\\
-       25\textcolor{red}{95}80\\
-       255\textcolor{red}{98}0\\
-       2558\textcolor{red}{90}\\
-       255809\\
-     \end{align*}
-     
-     ``Turtles'' are items that are near the end of the list, that belong at
-     the begining. These are called ``turtles'' due to the fact that they cause
-     the algorithm to run for much longer, and cannot move quickly to their
-     final destination. The ``turtle'' can only move once per pass, as they are
-     only moved for a single comparison, before the bubble moves on to the next
-     adjacent pair. These ``turtles'' are what commonly cause the worst case
-     preformance that is found in Bubble sort. As they can strictly only move
-     one positon for each pass, they can at most require $n-1$ passes to move
-     to their final position, where $n$ is the number of terms in the list.
-     Below is an example of a ``turtle'', where $0$ is the ``turtle''. Each row
-     is a new pass of the algorithm, where the bubble has passed through all
-     the elemnts, similar to that demonstrated in the example for ``rabbits'',
-     essentialy there are 5 steps between each step shown in the folowing
-     example. 
-
-     \begin{align*}
-       925580\\
-       1st \cdots 2558\textcolor{red}{90}\\
-       2ed \cdots 255\textcolor{red}{80}9\\
-       3ed \cdots 25\textcolor{red}{50}89\\
-       4th \cdots 2\textcolor{red}{50}589\\
-       5th \cdots \textcolor{red}{20}5589\\
-       025589\\
-     \end{align*}
-
-     \subsubsection{Algorithm}
-     \label{ssub:algorithm}
+     \subsubsection{Algorithm}\label{ssub:algorithm}
      \begin{algorithm}[H]
-       \caption{Bubble Sort}
-       \label{alg:bubble_sort}
+       \caption{Bubble Sort}\label{alg:bubble_sort}
        \begin{algorithmic}
          \Function{Bubble}{$a$}
-           \State $length \gets $length($a$)
+         \State{$length \gets $length ($a$)}
            \While{$length\neq0$}
-             \State $newLength \gets 0$
+           \State{$newLength \gets 0$}
              \For{$i=1$ to $length-1$}
                \If{$a[i-1]>a[i]$}
-                 \State Swap($a[i-1]$,$a[i]$)
-                 \State $newLength \gets i$
-               \EndIf
-             \EndFor
-             \State $length\gets newLength$
-           \EndWhile
-           \State \Return $a$
-         \EndFunction
+             \State{Swap ($a[i-1]$,$a[i]$)}
+           \State{$newLength \gets i$}
+           \EndIf{}
+           \EndFor{}
+           \State{$length\gets newLength$}
+           \EndWhile{}
+           \State{\Return{$a$}}
+           \EndFunction{}
        \end{algorithmic}
      \end{algorithm}
 
-     This is a simple pseudocode algorithm for a bubble sort implementation.
-     The algorithm begins by getting a value for the length of the array
-     ($length$). Then the algorithm runs while this value is not equal to zero.
-     Every time the algorithm begins a new pass through the array, is creates a
-     new length value ($newLength$). Then the algorithm runs through the values
-     of the array from the first value to the value at $length$. The
-     $newLength$ value is set to the position of the last swap. This is due to
-     the fact that beyond that position, there where no new swaps, so the data
-     must already be sorted. This practice is to remove some additional time,
-     as there is no reason for the algorithm to continue to check the already
-     sorted data. The $length$ value is set to the value of $newLength$, then
-     the process begins. As the value of $length$ becomes shorter, the
-     algorithm is getting closer to compleation. When the value of $length$
-     becomes $0$, this means that there were no more swaps in the list, and
-     that must imply that all the values have been sorted correclty.
-
-     \subsubsection{Analysis}
-     \label{ssub:analysis}
+     \subsubsection{Analysis}\label{ssub:analysis}
      
      \begin{tikzpicture}
        \begin{axis}[scaled ticks=false,
@@ -141,39 +52,22 @@
          xticklabels={,,},
          yticklabels={,,},
          ]
-           \addplot[color=red]{x^2};
+         \addplot[color=red]{x^2};
            \addlegendentry{$n^2$}
-           \addplot[color=yellow]{x^2};
-           \addlegendentry{$n^2$}
-           \addplot[color=green]{x};
+           \addplot[color=yellow]{x * log10(x)};
+           \addlegendentry{$n\log(n)$}
+           \addplot[color=green]{x * log10(x)};
+           \addlegendentry{$n\log(n)$}
+           \addplot[color=blue]{x};
            \addlegendentry{$n$}
-           \addplot[color=blue]{1};
-           \addlegendentry{$1$}
        \end{axis}
      \end{tikzpicture}
 
-     This is a plot for the theoretical run times that Bubble sort should
-     provide based on the number of elements provided. As it can be seen the
-     best and average cases (which are the same) grow extreamly rappidly. The
-     the rare best case preformance (which only will occure if a single pass is
-     neccasary, e.g. the array is already sorted) is much lower. The memory
-     usage is constant at $1$ as the sorting algorithm does not need to store
-     or make copies of the data, simply to view and make swaps to the data. The
-     exponential nature of the average case time complexity, means that this
-     algorithm will rappidly grow to an unsuable length of time required to
-     run. As it can clearly be seen in the implementation data below.
 
-     \subsubsection{Conclusion}
-     \label{ssub:conclusion}
+     \subsubsection{Conclusion}\label{ssub:conclusion}
      
-     The bubble sort algorithm, is extreamly inefficient, and should only be
-     used for demonstrational proupuses, or if the data is near the correct
-     order. Because the algorithm is effective at checking the set of data, and
-     can simply move a position one or two spots with only a maximum of two or
-     three passes required. However, anything beyond this causes the algorithm
-     to grow exponentialy in time complexity.
 
-     Implementation examples for Bubble sort can be found in
-     \ref{app:algorithms:bubble_sort}.
+     Implementation examples for Binary Tree sort can be found
+     in~\ref{app:algorithms:binary_tree_sort}.
    \end{multicols}
 \end{document}

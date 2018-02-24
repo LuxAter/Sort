@@ -1,8 +1,7 @@
 \documentclass{subfile}
 
 \begin{document}
-   \subsection{Bubble Sort}
-   \label{sub:bubble_sort}
+   \subsection{Bubble Sort}\label{sub:bubble_sort}
    
    \begin{align*}
      \text{Best-Case Preformance}\quad &O\left(n\right)\\
@@ -12,8 +11,7 @@
    \end{align*}
 
    \begin{multicols}{2}
-     \subsubsection{Introduction}
-     \label{ssub:introduction}
+     \subsubsection{Introduction}\label{ssub:introduction}
      
      Bubble sort is an algorithm that goes item by item, sorting pairs of two
      adjacent items at a time. This is where the name \textit{Bubble sort}
@@ -38,7 +36,7 @@
 
      Bubble sort has two elements that cause sorting to be extreamly slowed.
      These are ``turtles'', and ``rabbits''.
-     
+ 
      ``Rabbits'' are elements that are at the beginnging of the list and belong
      at the end of the list. Because bubble sort moves from the first to the
      last element on a repeating order, these ``rabbits'' will quickly move
@@ -84,19 +82,17 @@
        025589\\
      \end{align*}
 
-     \subsubsection{Algorithm}
-     \label{ssub:algorithm}
+     \subsubsection{Algorithm}\label{ssub:algorithm}
      \begin{algorithm}[H]
-       \caption{Bubble Sort}
-       \label{alg:bubble_sort}
+       \caption{Bubble Sort}\label{alg:bubble_sort}
        \begin{algorithmic}
          \Function{Bubble}{$a$}
-           \State $length \gets $length($a$)
+           \State $length \gets $length ($a$)
            \While{$length\neq0$}
              \State $newLength \gets 0$
              \For{$i=1$ to $length-1$}
                \If{$a[i-1]>a[i]$}
-                 \State Swap($a[i-1]$,$a[i]$)
+                 \State Swap ($a[i-1]$,$a[i]$)
                  \State $newLength \gets i$
                \EndIf
              \EndFor
@@ -106,6 +102,11 @@
          \EndFunction
        \end{algorithmic}
      \end{algorithm}
+
+     \begin{equation}
+       \frac{7}{8} * 16
+       this is math
+     \end{equation}
 
      This is a simple pseudocode algorithm for a bubble sort implementation.
      The algorithm begins by getting a value for the length of the array
@@ -123,9 +124,8 @@
      becomes $0$, this means that there were no more swaps in the list, and
      that must imply that all the values have been sorted correclty.
 
-     \subsubsection{Analysis}
-     \label{ssub:analysis}
-     
+     \subsubsection{Analysis}\label{ssub:analysis}
+
      \begin{tikzpicture}
        \begin{axis}[scaled ticks=false,
          width=\linewidth,
@@ -156,15 +156,14 @@
      provide based on the number of elements provided. As it can be seen the
      best and average cases (which are the same) grow extreamly rappidly. The
      the rare best case preformance (which only will occure if a single pass is
-     neccasary, e.g. the array is already sorted) is much lower. The memory
+     neccasary, e.g.\ the array is already sorted) is much lower. The memory
      usage is constant at $1$ as the sorting algorithm does not need to store
      or make copies of the data, simply to view and make swaps to the data. The
      exponential nature of the average case time complexity, means that this
      algorithm will rappidly grow to an unsuable length of time required to
      run. As it can clearly be seen in the implementation data below.
 
-     \subsubsection{Conclusion}
-     \label{ssub:conclusion}
+     \subsubsection{Conclusion}\label{ssub:conclusion}
      
      The bubble sort algorithm, is extreamly inefficient, and should only be
      used for demonstrational proupuses, or if the data is near the correct
@@ -173,7 +172,6 @@
      three passes required. However, anything beyond this causes the algorithm
      to grow exponentialy in time complexity.
 
-     Implementation examples for Bubble sort can be found in
-     \ref{app:algorithms:bubble_sort}.
+     Implementation examples for Bubble sort can be found in~\ref{app:algorithms:bubble_sort}.
    \end{multicols}
 \end{document}

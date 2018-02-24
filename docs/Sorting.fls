@@ -528,10 +528,10 @@ INPUT Sorting.stc1
 INPUT Sorting.stc1
 INPUT comparison/binary/binary_tree_sort.tex
 INPUT comparison/binary/binary_tree_sort.tex
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT comparison/block/block_sort.tex
 INPUT comparison/block/block_sort.tex
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT comparison/bubble/bubble_sort.tex
 INPUT comparison/bubble/bubble_sort.tex
 INPUT comparison/cocktail/cocktail_sort.tex

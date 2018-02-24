@@ -32,5 +32,56 @@
         ], 
         "directory": "/home/arden/Programming/cpp/sort/source", 
         "file": "main.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-I/home/arden/Programming/cpp/sort/include", 
+            "-I/home/arden/Programming/cpp/sort/external/cli/include", 
+            "-std=c++11", 
+            "-w", 
+            "-fprofile-arcs", 
+            "-ftest-coverage", 
+            "-o", 
+            "/home/arden/Programming/cpp/sort/build/source/./algo/merge.o", 
+            "algo/merge.cpp"
+        ], 
+        "directory": "/home/arden/Programming/cpp/sort/source", 
+        "file": "algo/merge.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-I/home/arden/Programming/cpp/sort/include", 
+            "-I/home/arden/Programming/cpp/sort/external/cli/include", 
+            "-std=c++11", 
+            "-w", 
+            "-fprofile-arcs", 
+            "-ftest-coverage", 
+            "-o", 
+            "/home/arden/Programming/cpp/sort/build/source/./algo/quick.o", 
+            "algo/quick.cpp"
+        ], 
+        "directory": "/home/arden/Programming/cpp/sort/source", 
+        "file": "algo/quick.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-I/home/arden/Programming/cpp/sort/include", 
+            "-I/home/arden/Programming/cpp/sort/external/cli/include", 
+            "-std=c++11", 
+            "-w", 
+            "-fprofile-arcs", 
+            "-ftest-coverage", 
+            "-o", 
+            "/home/arden/Programming/cpp/sort/build/source/./algo/bubble.o", 
+            "algo/bubble.cpp"
+        ], 
+        "directory": "/home/arden/Programming/cpp/sort/source", 
+        "file": "algo/bubble.cpp"
     }
 ]

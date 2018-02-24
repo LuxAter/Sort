@@ -1,3 +1,5 @@
+// Copyright 2017 Arden Rasmussen
+
 #include "algo/quick.hpp"
 
 #include <array>
